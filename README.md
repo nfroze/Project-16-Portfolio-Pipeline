@@ -12,18 +12,24 @@ This project demonstrates production-grade DevSecOps practices by:
 
 ## 🏗️ Architecture
 
+```mermaid
+flowchart LR
+    User[Users] -->|HTTPS| R53[Route 53<br/>noahfrost.co.uk]
+    R53 -->|DNS Resolution| CF[CloudFront<br/>CDN]
+    CF -->|Origin Request| S3[S3 Bucket<br/>Static Website]
+    
+    subgraph AWS Cloud
+        R53
+        CF
+        S3
+    end
 ```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   GitHub    │────▶│     S3      │────▶│ CloudFront  │
-│   Actions   │     │   Static    │     │     CDN     │
-└─────────────┘     │   Website   │     └─────────────┘
-                    └─────────────┘              │
-                                                 ▼
-                    ┌─────────────┐     ┌─────────────┐
-                    │  Route 53   │────▶│    Users    │
-                    │     DNS     │     │             │
-                    └─────────────┘     └─────────────┘
-```
+
+The infrastructure consists of:
+- **S3 Bucket**: Hosts the static website files
+- **CloudFront**: Global CDN for HTTPS and performance
+- **Route 53**: DNS management for custom domain
+
 
 ## 🛠️ Technologies
 

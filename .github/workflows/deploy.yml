@@ -4,6 +4,9 @@ name: Deploy Portfolio to AWS
 on:
   push:
     branches: [main]
+    paths:
+      - 'index.html'
+      - 'resume.pdf'
   workflow_dispatch:
 
 jobs:
