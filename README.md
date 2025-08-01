@@ -1,86 +1,104 @@
-# 🚀 Project 16: Portfolio Infrastructure as Code
+# 💻 Project 16: Portfolio DevOps Website
 
-Automated CI/CD pipeline and Infrastructure as Code for my DevSecOps portfolio website.
+Automated deployment pipeline and infrastructure as code for my portfolio - built the DevOps way.
 
 ## 🎯 Overview
 
-This project demonstrates production-grade DevSecOps practices by:
-- Managing AWS infrastructure with Terraform
-- Implementing CI/CD with GitHub Actions
-- Automating deployments and cache invalidation
-- Following security best practices
+This project transforms a simple portfolio website into a complete DevOps showcase featuring:
+- Automated CI/CD pipeline with GitHub Actions
+- AWS infrastructure managed with Terraform
+- Zero-downtime deployments
+- Git push → Live website in under 5 minutes
 
-## 🏗️ Architecture
+## 🔄 CI/CD Pipeline
 
-```mermaid
-flowchart LR
-    User[Users] -->|HTTPS| R53[Route 53<br/>noahfrost.co.uk]
-    R53 -->|DNS Resolution| CF[CloudFront<br/>CDN]
-    CF -->|Origin Request| S3[S3 Bucket<br/>Static Website]
-    
-    subgraph AWS Cloud
-        R53
-        CF
-        S3
-    end
+```yaml
+Trigger: Push to main (index.html or resume.pdf)
+    ↓
+Step 1: GitHub Actions workflow starts
+    ↓
+Step 2: Configure AWS credentials
+    ↓
+Step 3: Upload files to S3
+    ↓
+Step 4: Invalidate CloudFront cache
+    ↓
+Result: Portfolio updated globally in 2-5 minutes
 ```
 
-The infrastructure consists of:
-- **S3 Bucket**: Hosts the static website files
-- **CloudFront**: Global CDN for HTTPS and performance
-- **Route 53**: DNS management for custom domain
+## 🏗️ Infrastructure
 
+```
+                  ┌─────────────┐
+                  │    User     │
+                  └──────┬──────┘
+                         │
+                         ▼
+                   noahfrost.co.uk
+                         │
+                         ▼
+                  ┌─────────────┐
+                  │  Route 53   │
+                  │    (DNS)    │
+                  └──────┬──────┘
+                         │
+                         ▼
+                  ┌─────────────┐
+                  │ CloudFront  │
+                  │    (CDN)    │
+                  └──────┬──────┘
+                         │
+                         ▼
+                  ┌─────────────┐
+                  │  S3 Bucket  │
+                  │   (Static)  │
+                  └─────────────┘
+```
 
 ## 🛠️ Technologies
 
-- **Infrastructure**: Terraform
+- **CI/CD**: GitHub Actions
 - **Hosting**: AWS S3 Static Website
 - **CDN**: AWS CloudFront
 - **DNS**: AWS Route 53
-- **SSL**: AWS Certificate Manager
-- **CI/CD**: GitHub Actions
+- **IaC**: Terraform (for infrastructure management)
 - **Cost**: ~$0.50/month
 
-## 🚀 The Journey: Manual to Automated
+## 📝 The Journey: From Manual to Automated
 
-Initially built manually through AWS Console, then realised the pain of manual updates. Solution: Retrofit automation without downtime.
+Initially, I built the portfolio site manually through AWS Console. The pain point: manually uploading files and creating CloudFront invalidations every time I updated my CV or portfolio.
 
-### Bringing Existing Infrastructure Under Terraform Control
+**Solution**: Built this CI/CD pipeline that automatically deploys changes when I push to GitHub.
 
-After building everything manually in AWS Console, I successfully migrated it to Infrastructure as Code:
+### How the Pipeline Works
 
-1. **Examined AWS Console** - Documented all manually-created resources
-2. **Wrote Terraform files** - Created `.tf` files matching the existing infrastructure  
-3. **Imported resources** - Used `terraform import` commands to bring each resource under Terraform management
-4. **Applied changes** - Ran `terraform apply` to align resources with code
+1. **Edit locally**: Update index.html or resume.pdf
+2. **Push to GitHub**: `git push origin main`
+3. **GitHub Actions triggers**: Workflow starts automatically
+4. **Files deploy to S3**: AWS CLI syncs the changes
+5. **Cache invalidates**: CloudFront serves fresh content
+6. **Site updates globally**: Complete in under 5 minutes
+
+The pipeline is configured to:
+- Only run when portfolio files change (not README, etc.)
+- Use secure AWS credentials from GitHub Secrets
+- Provide clear success/failure feedback
+
+### Infrastructure Management
+
+After building everything manually, I also documented the infrastructure with Terraform:
 
 ```bash
 cd terraform
 terraform init
-
-# Imported all existing resources
-terraform import aws_s3_bucket.portfolio noahfrost-devsecops
-terraform import aws_cloudfront_distribution.portfolio ERS9RIPIBIOR
-# ... etc for all resources
-
-# Applied to ensure consistency
-terraform apply
+terraform import [resources]  # Brought existing infrastructure under IaC control
+terraform apply              # Now Terraform manages the infrastructure
 ```
 
-**Result**: Terraform now fully manages the infrastructure. Any future infrastructure changes go through code, providing version control, audit trails, and repeatability.
-
-### Deploy Updates
-
-Application updates use GitHub Actions:
-```bash
-git push origin main  # GitHub Actions handles file deployment
-```
-
-Infrastructure changes use Terraform:
-```bash
-terraform plan   # Review changes
-terraform apply  # Apply infrastructure updates
-```
+This provides:
+- Version-controlled infrastructure
+- Ability to recreate the entire setup
+- Clear documentation of AWS resources
 
 ## 🔒 Security Features
 
@@ -99,22 +117,13 @@ terraform apply  # Apply infrastructure updates
 
 ## 🎯 Key Achievements
 
-- Imported existing AWS infrastructure into Terraform
 - Automated deployment pipeline with cache invalidation
-- Zero-downtime deployments
+- Successfully imported manual AWS infrastructure into Terraform
+- Zero-downtime migration from manual to automated
 - Sub-minute deployment times
-- Infrastructure fully documented as code
+- Complete DevOps transformation of a simple website
 
-## 🔄 CI/CD Pipeline
-
-The GitHub Actions workflow:
-
-1. Triggers on push to main
-2. Syncs website files to S3
-3. Creates CloudFront invalidation
-4. Completes in under 60 seconds
-
-## 📝 Lessons Learned
+## 📚 Lessons Learned
 
 ### Real-World Application
 
