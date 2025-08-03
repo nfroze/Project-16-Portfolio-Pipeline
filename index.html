@@ -179,6 +179,11 @@
             font-size: 0.9rem;
         }
 
+        /* Hide mobile break on desktop */
+        .mobile-break {
+            display: none;
+        }
+
         /* Animations */
         @keyframes slideDown {
             from {
@@ -260,6 +265,11 @@
                 height: 18px;
             }
 
+            /* Show line break on mobile */
+            .mobile-break {
+                display: inline;
+            }
+
             .hero {
                 padding: 2rem 2rem;
             }
@@ -319,7 +329,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>DevSecOps Engineer.</h1>
-        <p>I don't just build secure systems - I CONQUER them.</p>
+        <p>I don't just build secure systems -<br class="mobile-break"> I CONQUER them.</p>
     </section>
 
     <!-- Projects Section -->
