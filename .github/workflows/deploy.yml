@@ -6,7 +6,7 @@ on:
     branches: [main]
     paths:
       - 'index.html'
-      - 'resume.pdf'
+      - 'Resume.pdf'
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
       - name: Upload files to S3
         run: |
           aws s3 cp index.html s3://noahfrost-devsecops/
-          aws s3 cp resume.pdf s3://noahfrost-devsecops/
+          aws s3 cp Resume.pdf s3://noahfrost-devsecops/
 
       - name: Invalidate CloudFront cache
         run: |
