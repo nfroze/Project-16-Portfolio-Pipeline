@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a1a1a">
     <title>Noah Frost - DevSecOps Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    
     <style>
         * {
             margin: 0;
@@ -82,12 +91,16 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Hero Section */
+        /* Hero Section - REDUCED TOP MARGIN */
         .hero {
-            margin-top: 8rem;
+            margin-top: 5rem; /* Reduced from 8rem */
             padding: 4rem 4rem 2rem;
             text-align: center;
             animation: fadeIn 1s ease-out;
+            min-height: calc(100vh - 5rem); /* Ensures hero takes up full viewport minus nav */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .hero h1 {
@@ -228,6 +241,11 @@
             .social-buttons {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+
+            .hero {
+                margin-top: 4rem; /* Even less margin on mobile */
+                min-height: calc(100vh - 4rem);
             }
 
             .hero h1 {

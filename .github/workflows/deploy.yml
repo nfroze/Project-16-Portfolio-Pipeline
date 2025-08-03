@@ -7,6 +7,7 @@ on:
     paths:
       - 'index.html'
       - 'Resume.pdf'
+      - 'favicon/**'
   workflow_dispatch:
 
 jobs:
@@ -26,8 +27,12 @@ jobs:
 
       - name: Upload files to S3
         run: |
+          # Upload main files
           aws s3 cp index.html s3://noahfrost-devsecops/
           aws s3 cp Resume.pdf s3://noahfrost-devsecops/
+          
+          # Upload favicon
+          aws s3 sync favicon/ s3://noahfrost-devsecops/favicon/
 
       - name: Invalidate CloudFront cache
         run: |
