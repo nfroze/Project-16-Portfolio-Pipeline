@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1a1a1a">
-    <title>Noah Frost - DevSecOps Portfolio</title>
+    <title>Noah Frost</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
@@ -29,6 +29,7 @@
             background-color: #1a1a1a;
             color: #e0e0e0;
             line-height: 1.6;
+            padding-top: 4rem; /* Account for fixed nav */
         }
 
         /* Navigation */
@@ -91,16 +92,11 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Hero Section - REDUCED TOP MARGIN */
+        /* Hero Section */
         .hero {
-            margin-top: 5rem; /* Reduced from 8rem */
-            padding: 4rem 4rem 2rem;
+            padding: 3rem 4rem;
             text-align: center;
             animation: fadeIn 1s ease-out;
-            min-height: calc(100vh - 5rem); /* Ensures hero takes up full viewport minus nav */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .hero h1 {
@@ -117,13 +113,13 @@
             font-size: 1.2rem;
             color: #a0a0a0;
             max-width: 600px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2rem; /* Reduced bottom margin from 3rem to 2rem */
             animation: slideUp 0.8s ease-out 0.2s backwards;
         }
 
         /* Projects Section */
         .projects {
-            padding: 4rem;
+            padding: 2rem 4rem 4rem; /* Reduced top padding from 4rem to 2rem */
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -229,6 +225,10 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding-top: 3rem; /* Less padding on mobile */
+            }
+
             nav {
                 padding: 1.5rem 2rem;
             }
@@ -244,8 +244,7 @@
             }
 
             .hero {
-                margin-top: 4rem; /* Even less margin on mobile */
-                min-height: calc(100vh - 4rem);
+                padding: 2rem 2rem;
             }
 
             .hero h1 {
