@@ -1,4 +1,4 @@
-# 💻 Project 16: Portfolio DevOps Website
+# 💻 Project 16: Portfolio Pipeline
 
 Automated deployment pipeline and infrastructure as code for my portfolio - built the DevOps way.
 
