@@ -113,13 +113,13 @@
         /* Projects Section */
         .projects {
             padding: 2rem 4rem 4rem; /* Reduced top padding from 4rem to 2rem */
-            max-width: 1200px;
+            max-width: 1500px;
             margin: 0 auto;
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(625px, 1fr));
             gap: 1.5rem;
             margin-bottom: 4rem;
         }
@@ -136,6 +136,10 @@
             animation: fadeInUp 0.8s ease-out 0.6s backwards;
             will-change: transform;
             text-align: center;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .project-tile:hover {
