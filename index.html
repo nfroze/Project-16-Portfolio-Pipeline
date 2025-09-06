@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#1a1a1a">
+    <meta name="theme-color" content="#f5f5f7">
     <title>Noah Frost</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -18,258 +22,137 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            line-height: 1.6;
-            padding-top: 4rem; /* Account for fixed nav */
+            font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #2c2c2e;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Navigation */
         nav {
-            padding: 2rem 4rem;
+            padding: 1.5rem 3rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: saturate(180%) blur(20px);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background-color: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            animation: slideDown 0.5s ease-out;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
         }
 
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #ffffff;
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: #424245;
             text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .nav-content {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 0.4rem;
         }
 
-        .social-buttons {
-            display: flex;
-            gap: 1.2rem;
+        .nav-link:hover {
+            color: #2c2c2e;
         }
 
-        .social-btn {
-            padding: 0.5rem 1rem;
-            background-color: #2a2a2a;
-            border: 1px solid #3a3a3a;
-            color: #e0e0e0;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .social-btn:hover {
-            background-color: #3a3a3a;
-            border-color: #4a4a4a;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            padding: 3rem 4rem;
+            padding: 8rem 3rem 4rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: slideUp 0.8s ease-out;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #a0a0a0;
-            max-width: 600px;
-            margin: 0 auto 2rem; /* Reduced bottom margin from 3rem to 2rem */
-            animation: slideUp 0.8s ease-out 0.2s backwards;
+            font-size: 1.25rem;
+            color: #6e6e73;
         }
 
-        /* Projects Section */
-        .projects {
-            padding: 2rem 4rem 4rem; /* Reduced top padding from 4rem to 2rem */
-            max-width: 1500px;
+        /* Projects Container */
+        .projects-container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 3rem;
         }
 
+        /* Project Grid */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(625px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
-            margin-bottom: 4rem;
         }
 
+        /* Project Tile */
         .project-tile {
-            background-color: #242424;
-            border: 1px solid #343434;
-            border-radius: 12px;
-            padding: 1.5rem;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
-            will-change: transform;
-            text-align: center;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: block;
         }
 
         .project-tile:hover {
-            transform: translateY(-3px);
-            border-color: #4a4a4a;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
         }
 
-        .project-tile h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: #ffffff;
-            text-align: center;
+        .project-number {
+            font-size: 0.875rem;
+            color: #86868b;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
-        .project-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.8rem;
+        .project-title {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: #2c2c2e;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
         }
 
-        .project-header h3 {
-            margin-bottom: 0;
+        .project-description {
+            font-size: 0.9375rem;
+            color: #424245;
+            line-height: 1.5;
         }
 
-        .project-icon {
-            display: none;
-        }
-
-        .project-tile p {
-            color: #a0a0a0;
-            margin-bottom: 0;
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
-
-        /* Hide mobile break on desktop */
-        .mobile-break {
-            display: none;
-        }
-
-        /* Animations */
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Mobile Design - Icon only */
+        /* Mobile */
         @media (max-width: 768px) {
-            body {
-                padding-top: 4.5rem; /* Compact single-line nav */
-            }
-
             nav {
-                padding: 0.75rem 1rem;
+                padding: 1rem 1.5rem;
             }
 
-            .logo {
-                font-size: 1rem;
+            .nav-links {
+                gap: 1.5rem;
             }
-
-            .nav-content {
-                gap: 0;
-            }
-
-            .social-buttons {
-                gap: 0.5rem;
-            }
-
-            .social-btn {
-                padding: 0.6rem;
-                font-size: 0;
-                gap: 0;
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .social-btn svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            /* Show line break on mobile */
-            .mobile-break {
-                display: inline;
+            
+            .nav-link {
+                font-size: 0.875rem;
             }
 
             .hero {
-                padding: 2rem 2rem;
+                padding: 6rem 1.5rem 3rem;
             }
 
             .hero h1 {
@@ -277,15 +160,31 @@
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 1.125rem;
             }
 
-            .projects {
-                padding: 2rem;
+            .projects-container {
+                padding: 1.5rem;
             }
 
             .project-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .project-tile {
+                padding: 1.5rem;
+            }
+
+            .project-title {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1400px) {
+            .projects-container {
+                max-width: 1400px;
             }
         }
     </style>
@@ -293,265 +192,162 @@
 <body>
     <!-- Navigation --> 
     <nav>
-        <a href="#" class="logo"></a>
-        <div class="nav-content">
-            <div class="social-buttons">
-                <a href="https://github.com/nfroze" class="social-btn" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/nfroze/" class="social-btn" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                    LinkedIn
-                </a>
-                <a href="Resume.pdf" class="social-btn" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M14,2H6C5.17,2 4.5,2.67 4.5,3.5V20.5C4.5,21.33 5.17,22 6,22H18C18.83,22 19.5,21.33 19.5,20.5V8.5L14,2M13,3.5L18,8.5H13V3.5M12,11L8,15H10V19H14V15H16L12,11"/>
-                    </svg>
-                    CV
-                </a>
-                <a href="https://www.credly.com/users/noah-frost.4fddb91b" class="social-btn" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>
-                    </svg>
-                    Certifications
-                </a>
-            </div>
+        <div class="nav-links">
+            <a href="https://github.com/nfroze" class="nav-link" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/nfroze/" class="nav-link" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn
+            </a>
+            <a href="Resume.pdf" class="nav-link" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14,2H6C5.17,2 4.5,2.67 4.5,3.5V20.5C4.5,21.33 5.17,22 6,22H18C18.83,22 19.5,21.33 19.5,20.5V8.5L14,2M13,3.5L18,8.5H13V3.5M12,11L8,15H10V19H14V15H16L12,11"/>
+                </svg>
+                CV
+            </a>
+            <a href="https://www.credly.com/users/noah-frost.4fddb91b" class="nav-link" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>
+                </svg>
+                Certifications
+            </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <h1>Noah Frost</h1>
+        <p>Cloud Engineer</p>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <!-- Project Grid -->
+    <!-- Projects -->
+    <section class="projects-container">
         <div class="project-grid">
-            <!-- Project 20 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-20-Multi-Cloud-Orchestration', '_blank')">
-                <div class="project-header">
-                    <h3>Project 20: Multi-Cloud Orchestration</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>AWS, Azure, GCP deployment with Terraform. Ansible configuration. Datadog monitoring.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-20-Multi-Cloud-Orchestration" class="project-tile" target="_blank">
+                <div class="project-number">20</div>
+                <h3 class="project-title">Multi-Cloud Orchestration</h3>
+                <p class="project-description">Infrastructure deployment to AWS, Azure, and GCP using Terraform. Ansible configuration. Datadog monitoring. GitHub Actions workflow.</p>
+            </a>
 
-            <!-- Project 19 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-19-AI-Governance-Framework', '_blank')">
-                <div class="project-header">
-                    <h3>Project 19: AI Governance Framework</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>HCP Terraform Sentinel and OPA Gatekeeper on EKS. ML model tracking with admission control.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-19-AI-Governance-Framework" class="project-tile" target="_blank">
+                <div class="project-number">19</div>
+                <h3 class="project-title">AI Governance Framework</h3>
+                <p class="project-description">HCP Terraform Sentinel policies and OPA Gatekeeper on AWS EKS. Kubernetes admission control for ML model tracking. Policy enforcement before provisioning.</p>
+            </a>
 
-            <!-- Project 18 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-18-AI-FinOps-Platform', '_blank')">
-                <div class="project-header">
-                    <h3>Project 18: AI FinOps Platform</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Kafka streaming on K8s with Strimzi. OpenCost, Prometheus, Grafana for GPU/API cost tracking.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-18-AI-FinOps-Platform" class="project-tile" target="_blank">
+                <div class="project-number">18</div>
+                <h3 class="project-title">AI FinOps Platform</h3>
+                <p class="project-description">Apache Kafka streaming on Kubernetes using Strimzi operator. OpenCost, Prometheus, and Grafana for metrics collection. Event processing for GPU and API costs.</p>
+            </a>
 
-            <!-- Project 17 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-17-AI-Developer-Platform', '_blank')">
-                <div class="project-header">
-                    <h3>Project 17: AI Developer Platform</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Backstage IDP on hybrid EKS/ECS. MLflow integration. ArgoCD GitOps with Helm.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-17-AI-Developer-Platform" class="project-tile" target="_blank">
+                <div class="project-number">17</div>
+                <h3 class="project-title">AI Developer Platform</h3>
+                <p class="project-description">Internal Developer Platform using Backstage on hybrid AWS EKS/ECS architecture. MLflow integration. ArgoCD GitOps with Helm deployments. Terraform infrastructure.</p>
+            </a>
 
-            <!-- Project 16 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-16-Portfolio-Pipeline', '_blank')">
-                <div class="project-header">
-                    <h3>Project 16: Portfolio Pipeline</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>GitHub Actions CI/CD for static site. S3 hosting with CloudFront CDN. Terraform IaC.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-16-Portfolio-Pipeline" class="project-tile" target="_blank">
+                <div class="project-number">16</div>
+                <h3 class="project-title">Portfolio Pipeline</h3>
+                <p class="project-description">CI/CD pipeline with GitHub Actions for static site deployment. AWS S3 hosting with CloudFront CDN. Infrastructure managed with Terraform. Automated cache invalidation.</p>
+            </a>
 
-            <!-- Project 15 -->
-            <div class="project-tile" style="cursor: not-allowed; opacity: 0.8;">
-                <div class="project-header">
-                    <h3>Project 15: Observability Stack</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>ELK on Kubernetes with Fluentd DaemonSet. Prometheus/Grafana metrics. Index lifecycle management.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-15-Observability-Stack" class="project-tile" target="_blank">
+                <div class="project-number">15</div>
+                <h3 class="project-title">Observability Stack</h3>
+                <p class="project-description">Elasticsearch cluster on Kubernetes with Logstash and Kibana. Fluentd DaemonSet for log collection. Prometheus and Grafana for metrics. Index lifecycle management.</p>
+            </a>
 
-            <!-- Project 14 -->
-            <div class="project-tile" style="cursor: not-allowed; opacity: 0.8;">
-                <div class="project-header">
-                    <h3>Project 14: 3-Tier Serverless Application</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>React on S3/CloudFront. Lambda with API Gateway. DynamoDB backend. Multi-env Terraform.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-14-3-Tier-Serverless-Application" class="project-tile" target="_blank">
+                <div class="project-number">14</div>
+                <h3 class="project-title">3-Tier Serverless Application</h3>
+                <p class="project-description">Full-stack serverless e-commerce application with React frontend on S3/CloudFront, Lambda functions via API Gateway, and DynamoDB database. Infrastructure as Code with Terraform.</p>
+            </a>
 
-            <!-- Project 13 -->
-            <div class="project-tile" style="cursor: not-allowed; opacity: 0.8;">
-                <div class="project-header">
-                    <h3>Project 13: CI/CD Pipeline Comparison</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Jenkins vs GitLab CI workflows. Ansible provisioning. SonarQube/pytest integration. PostgreSQL RDS.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-13-CI-CD-Pipeline-Comparison" class="project-tile" target="_blank">
+                <div class="project-number">13</div>
+                <h3 class="project-title">CI/CD Pipeline Comparison</h3>
+                <p class="project-description">Jenkins and GitLab CI pipeline implementations. Jenkins on EC2 deploying Python Flask app. GitLab deploying Node.js app. Terraform infrastructure provisioning.</p>
+            </a>
 
-            <!-- Project 12 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-12-MCP-Meets-K8s', '_blank')">
-                <div class="project-header">
-                    <h3>Project 12: MCP Meets K8s</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>MCP server for K8s ops on EKS. ArgoCD GitOps. Prometheus/Grafana. Security with Checkov/Trivy.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-12-MCP-Meets-K8s" class="project-tile" target="_blank">
+                <div class="project-number">12</div>
+                <h3 class="project-title">MCP Meets K8s</h3>
+                <p class="project-description">Model Context Protocol server for Kubernetes operations. AWS EKS with ArgoCD GitOps. Prometheus and Grafana monitoring. Security scanning with Checkov, Semgrep, Gitleaks, and Trivy.</p>
+            </a>
 
-            <!-- Project 11 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-11-MCP-IaC-Security', '_blank')">
-                <div class="project-header">
-                    <h3>Project 11: MCP IaC Security</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>MCP analyzing Checkov findings, generating Terraform fixes. GitHub Actions integration.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-11-MCP-IaC-Security" class="project-tile" target="_blank">
+                <div class="project-number">11</div>
+                <h3 class="project-title">MCP IaC Security</h3>
+                <p class="project-description">MCP server analysing Checkov findings and generating Terraform fixes. GitHub Actions integration for security scanning. Node.js implementation for Claude Desktop.</p>
+            </a>
 
-            <!-- Project 10 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-10-MCP-Security-Ops', '_blank')">
-                <div class="project-header">
-                    <h3>Project 10: MCP Security Ops</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>MCP server for AWS GuardDuty. Automated incident investigation and report generation.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-10-MCP-Security-Ops" class="project-tile" target="_blank">
+                <div class="project-number">10</div>
+                <h3 class="project-title">MCP Security Ops</h3>
+                <p class="project-description">Model Context Protocol server for AWS GuardDuty incident response. EventBridge-triggered Lambda for EC2 isolation. Slack webhook integration.</p>
+            </a>
 
-            <!-- Project 9 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-9-GitOps-Monitoring', '_blank')">
-                <div class="project-header">
-                    <h3>Project 9: GitOps Monitoring</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>ArgoCD GitOps on AWS EKS. Prometheus/Grafana via Helm. Auto-sync from Git.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-9-GitOps-ArgoCD-Monitoring" class="project-tile" target="_blank">
+                <div class="project-number">9</div>
+                <h3 class="project-title">GitOps Monitoring</h3>
+                <p class="project-description">GitOps workflow with ArgoCD on AWS EKS. Prometheus and Grafana deployment via Helm. Automatic synchronisation from Git repository.</p>
+            </a>
 
-            <!-- Project 8 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-8-Slack-MCP-Assistant', '_blank')">
-                <div class="project-header">
-                    <h3>Project 8: Slack MCP Assistant</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>MCP server connecting Claude to Slack. Message retrieval and summarization via Web API.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-8-Slack-MCP-Assistant" class="project-tile" target="_blank">
+                <div class="project-number">8</div>
+                <h3 class="project-title">Slack MCP Assistant</h3>
+                <p class="project-description">Model Context Protocol server connecting Claude Desktop to Slack. Retrieves and summarises workspace messages using Slack Web API.</p>
+            </a>
 
-            <!-- Project 7 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-7-Gaming-Platform-Threat-Modeling-Exercise', '_blank')">
-                <div class="project-header">
-                    <h3>Project 7: Live Threat Modeling</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Gaming platform security analysis. Social engineering vectors using OSINT. Privacy control proposals.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-7-Live-Threat-Modeling" class="project-tile" target="_blank">
+                <div class="project-number">7</div>
+                <h3 class="project-title">Live Threat Modeling</h3>
+                <p class="project-description">Security analysis of gaming platform's winner disclosure practices. Demonstrated social engineering attack vectors using OSINT techniques and proposed privacy controls.</p>
+            </a>
 
-            <!-- Project 6 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-6-Full-Stack-Chrome-Extension-with-AI-Integration', '_blank')">
-                <div class="project-header">
-                    <h3>Project 6: AI Chrome Extension</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Chrome extension for LinkedIn posts. Claude AI integration for TLDR summaries and spam scoring.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-6-AI-Chrome-Extension" class="project-tile" target="_blank">
+                <div class="project-number">6</div>
+                <h3 class="project-title">AI Chrome Extension</h3>
+                <p class="project-description">Chrome extension for LinkedIn post analysis using Claude AI. Provides TLDR summaries and satirical commentary with spam scoring.</p>
+            </a>
 
-            <!-- Project 5 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-5-End-to-End-DevSecOps-Transformation', '_blank')">
-                <div class="project-header">
-                    <h3>Project 5: DevSecOps Pipeline</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Node.js to EKS with full security scanning. Terraform IaC. GuardDuty and Splunk SIEM integration.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-5-DevSecOps-Pipeline" class="project-tile" target="_blank">
+                <div class="project-number">5</div>
+                <h3 class="project-title">DevSecOps Pipeline</h3>
+                <p class="project-description">Node.js application deployed to Amazon EKS with automated security scanning throughout CI/CD. Terraform infrastructure with GuardDuty and Splunk SIEM integration.</p>
+            </a>
 
-            <!-- Project 4 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-4-Threat-Modeling-Incident-Response', '_blank')">
-                <div class="project-header">
-                    <h3>Project 4: Threat Modeling</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Healthcare platform STRIDE analysis. MITRE ATT&CK mapping. Three attack scenarios with response plans.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-4-Threat-Modeling" class="project-tile" target="_blank">
+                <div class="project-number">4</div>
+                <h3 class="project-title">Threat Modeling</h3>
+                <p class="project-description">Threat modeling for healthcare platform using STRIDE framework and MITRE ATT&CK mapping. Three attack scenarios analysed with risk assessments and incident response plans.</p>
+            </a>
 
-            <!-- Project 3 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-3-Infrastructure-as-Code-IaC-Security', '_blank')">
-                <div class="project-header">
-                    <h3>Project 3: IaC Security</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Terraform AWS infrastructure with Checkov scanning. IAM least privilege. CI/CD pre-deployment checks.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-3-IaC-Security" class="project-tile" target="_blank">
+                <div class="project-number">3</div>
+                <h3 class="project-title">IaC Security</h3>
+                <p class="project-description">Terraform AWS infrastructure with Checkov security scanning. IAM groups configured with least privilege. CI/CD pipeline scans before deployment.</p>
+            </a>
 
-            <!-- Project 2 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-2-Image-and-Runtime-Application-Security', '_blank')">
-                <div class="project-header">
-                    <h3>Project 2: Container Security</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>Docker scanning with Trivy, ECS deployment. OWASP ZAP dynamic testing via ALB.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-2-Container-Security" class="project-tile" target="_blank">
+                <div class="project-number">2</div>
+                <h3 class="project-title">Container Security</h3>
+                <p class="project-description">Docker image scanning with Trivy and deployment to Amazon ECS. OWASP ZAP dynamic testing against deployed application via Application Load Balancer.</p>
+            </a>
 
-            <!-- Project 1 -->
-            <div class="project-tile" onclick="window.open('https://github.com/nfroze/Project-1-CI-CD-Pipeline-Security', '_blank')">
-                <div class="project-header">
-                    <h3>Project 1: Secure CI/CD</h3>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </div>
-                <p>GitHub Actions CI/CD with security scanning. Semgrep, npm audit, and Gitleaks on every push.</p>
-            </div>
+            <a href="https://github.com/nfroze/Project-1-Secure-CI-CD" class="project-tile" target="_blank">
+                <div class="project-number">1</div>
+                <h3 class="project-title">Secure CI/CD</h3>
+                <p class="project-description">CI/CD pipeline with security scanning for Node.js application. GitHub Actions workflow runs Semgrep, npm audit, and Gitleaks on every push.</p>
+            </a>
         </div>
     </section>
 </body>
