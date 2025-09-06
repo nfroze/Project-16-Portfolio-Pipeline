@@ -8,4 +8,4 @@ GitHub Actions • AWS S3 • CloudFront • Route 53 • Terraform • CI/CD
 
 ## Screenshots
 
-- [Website](screenshots/website.png)
+![Website](screenshots/website.png)
