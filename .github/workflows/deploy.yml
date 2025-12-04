@@ -7,6 +7,10 @@ on:
     paths:
       - 'index.html'
       - 'Resume.pdf'
+      - '*.png'
+      - '*.jpg'
+      - '*.jpeg'
+      - '*.webp'
   workflow_dispatch:
 
 jobs:
@@ -26,9 +30,15 @@ jobs:
 
       - name: Upload files to S3
         run: |
-          # Upload main files
-          aws s3 cp index.html s3://noahfrost-devsecops/
-          aws s3 cp Resume.pdf s3://noahfrost-devsecops/
+          # Sync site files only
+          aws s3 sync . s3://noahfrost-devsecops/ \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "terraform/*" \
+            --exclude "screenshots/*" \
+            --exclude ".gitignore" \
+            --exclude "README.md" \
+            --delete
 
       - name: Invalidate CloudFront cache
         run: |
