@@ -123,6 +123,30 @@
         }
 
         /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delays for grid items */
+        .stagger-1 { transition-delay: 0.05s; }
+        .stagger-2 { transition-delay: 0.1s; }
+        .stagger-3 { transition-delay: 0.15s; }
+        .stagger-4 { transition-delay: 0.2s; }
+        .stagger-5 { transition-delay: 0.25s; }
+        .stagger-6 { transition-delay: 0.3s; }
+        .stagger-7 { transition-delay: 0.35s; }
+        .stagger-8 { transition-delay: 0.4s; }
+
+        /* ============================================
            LAYOUT
            ============================================ */
         .container {
@@ -228,9 +252,30 @@
             pointer-events: none;
         }
 
+        .hero__inner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            align-items: center;
+        }
+
         .hero__content {
             position: relative;
             z-index: 1;
+        }
+
+        .hero__image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero__headshot {
+            width: 280px;
+            height: 280px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+            animation: fadeInUp 0.6s ease 0.5s both;
         }
 
         .hero__badge {
@@ -239,7 +284,7 @@
             gap: 0.5rem;
             padding: 0.5rem 1rem;
             background: var(--accent-dim);
-            border: 1px solid rgba(34, 211, 238, 0.2);
+            border: 1px solid rgba(244, 63, 94, 0.2);
             border-radius: 100px;
             font-family: var(--font-mono);
             font-size: 0.75rem;
@@ -276,12 +321,30 @@
         }
 
         .hero__subtitle {
+            font-family: var(--font-mono);
             font-size: clamp(1.25rem, 3vw, 1.75rem);
-            font-weight: 300;
+            font-weight: 400;
             color: var(--text-secondary);
             max-width: 600px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             animation: fadeInUp 0.6s ease 0.2s both;
+            min-height: 2.5rem;
+        }
+
+        /* Typing cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: var(--accent);
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .hero__description {
@@ -416,19 +479,6 @@
             object-fit: cover;
         }
 
-        .about__image-placeholder {
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-            text-align: center;
-        }
-
-        .about__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .about__content h3 {
             font-family: var(--font-mono);
             font-size: 1.5rem;
@@ -475,57 +525,99 @@
         }
 
         /* ============================================
-           FEATURED PROJECTS
+           FEATURED PROJECTS - NEW LAYOUT
            ============================================ */
         .featured-projects {
             display: flex;
             flex-direction: column;
-            gap: 3rem;
+            gap: 4rem;
         }
 
         .featured-project {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            padding: 2.5rem;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
+            overflow: hidden;
             transition: all var(--transition-base);
         }
 
         .featured-project:hover {
             border-color: var(--accent);
-            background: var(--bg-card-hover);
             transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
+        .featured-project__visual {
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .featured-project__visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .featured-project:hover .featured-project__visual img {
+            transform: scale(1.02);
+        }
+
         .featured-project__content {
+            padding: 2rem 2.5rem 2.5rem;
+        }
+
+        .featured-project__header {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
         }
 
         .featured-project__number {
             font-family: var(--font-mono);
             font-size: 0.75rem;
             color: var(--accent);
-            margin-bottom: 0.75rem;
         }
 
         .featured-project__title {
             font-family: var(--font-mono);
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
 
-        .featured-project__description {
-            color: var(--text-secondary);
-            line-height: 1.7;
+        .featured-project__hook {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            font-weight: 500;
             margin-bottom: 1.5rem;
-            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        .featured-project__details {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-project__details dt {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .featured-project__details dd {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-left: 0;
         }
 
         .featured-project__tech {
@@ -562,38 +654,6 @@
 
         .featured-project__link:hover {
             text-decoration: underline;
-        }
-
-        .featured-project__visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-diagram {
-            width: 100%;
-            aspect-ratio: 16/10;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--text-tertiary);
-        }
-
-        .project-screenshot {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            transition: transform var(--transition-base), box-shadow var(--transition-base);
-        }
-
-        .featured-project:hover .project-screenshot {
-            transform: scale(1.02);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
 
         /* ============================================
@@ -883,6 +943,29 @@
            RESPONSIVE
            ============================================ */
         @media (max-width: 1024px) {
+            .hero__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero__image {
+                display: none;
+            }
+
+            .hero__content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero__description {
+                text-align: center;
+            }
+
+            .hero__cta {
+                justify-content: center;
+            }
+
             .about__grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -890,14 +973,11 @@
 
             .about__image-wrapper {
                 max-width: 300px;
+                margin: 0 auto;
             }
 
-            .featured-project {
+            .certs-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .featured-project__visual {
-                order: -1;
             }
         }
 
@@ -907,28 +987,40 @@
             }
 
             .nav__links {
-                display: none;
-                position: absolute;
+                position: fixed;
                 top: 100%;
                 left: 0;
                 right: 0;
+                flex-direction: column;
                 background: var(--bg-primary);
                 border-bottom: 1px solid var(--border);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1rem;
+                padding: 1rem;
+                gap: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity var(--transition-fast), visibility var(--transition-fast);
             }
 
             .nav__links.active {
-                display: flex;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav__links li {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .nav__links li:last-child {
+                border-bottom: none;
             }
 
             .nav__toggle {
                 display: block;
             }
 
-            .certs-grid {
-                grid-template-columns: 1fr;
+            .featured-project__content {
+                padding: 1.5rem;
             }
 
             .projects-grid {
@@ -937,63 +1029,53 @@
 
             .about__highlight {
                 flex-wrap: wrap;
-                gap: 1.5rem;
-            }
-
-            .hero__cta {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
                 justify-content: center;
             }
 
-            .btn--secondary {
-                width: auto;
-            }
-
-            .hero__cta .btn--secondary {
-                width: 100%;
+            .about__stat {
+                flex: 1 1 40%;
             }
         }
 
-        /* ============================================
-           UTILITIES
-           ============================================ */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .fade-in {
+                opacity: 1;
+                transform: none;
+            }
+
+            .typing-cursor {
+                animation: none;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Skip link for accessibility -->
     <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="container nav__inner">
             <a href="#" class="nav__logo" aria-label="Noah Frost - Home">
-                noah<span>.</span>frost
+                noah<span>frost</span>
             </a>
-            <button class="nav__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav__links" role="list">
+            <ul class="nav__links" id="nav-links">
                 <li><a href="#about" class="nav__link">About</a></li>
                 <li><a href="#featured" class="nav__link">Featured</a></li>
                 <li><a href="#projects" class="nav__link">Projects</a></li>
-                <li><a href="#stack" class="nav__link">Stack</a></li>
+                <li><a href="#skills" class="nav__link">Skills</a></li>
+                <li><a href="#certifications" class="nav__link">Certs</a></li>
                 <li><a href="#contact" class="nav__link">Contact</a></li>
             </ul>
         </div>
@@ -1003,47 +1085,52 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <div class="hero__content">
-                    <div class="hero__badge">
-                        Open to opportunities
+                <div class="hero__inner">
+                    <div class="hero__content">
+                        <div class="hero__badge">
+                            Open to opportunities
+                        </div>
+                        <h1 class="hero__title">
+                            Noah <span>Frost</span>
+                        </h1>
+                        <p class="hero__subtitle">
+                            <span id="typing-text"></span><span class="typing-cursor"></span>
+                        </p>
+                        <p class="hero__description">
+                            Former Police Constable → DevSecOps Engineer. I bring incident response instincts, compliance experience, and the ability to explain security decisions to people who aren't engineers.
+                        </p>
+                        <div class="hero__cta">
+                            <a href="#featured" class="btn btn--primary">
+                                View Projects
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                </svg>
+                            </a>
+                            <a href="./Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                Resume
+                            </a>
+                            <a href="https://github.com/nfroze" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
                     </div>
-                    <h1 class="hero__title">
-                        Noah <span>Frost</span>
-                    </h1>
-                    <p class="hero__subtitle">
-                        DevSecOps Engineer
-                    </p>
-                    <p class="hero__description">
-                        Former Police Constable → DevSecOps Engineer. I bring incident response instincts and security-first thinking to cloud infrastructure.
-                    </p>
-                    <div class="hero__cta">
-                        <a href="#featured" class="btn btn--primary">
-                            View Projects
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </a>
-                        <a href="./Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                <polyline points="7 10 12 15 17 10"/>
-                                <line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                            Resume
-                        </a>
-                        <a href="https://github.com/nfroze" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
-                            </svg>
-                            GitHub
-                        </a>
+                    <div class="hero__image">
+                        <img src="./headshot.png" alt="Noah Frost - DevSecOps Engineer" class="hero__headshot">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about">
+        <section id="about" class="fade-in">
             <div class="container">
                 <div class="about__grid">
                     <div class="about__image-wrapper">
@@ -1054,16 +1141,16 @@
                     <div class="about__content">
                         <div class="section-header">
                             <p class="section-label">About</p>
-                            <h2 class="section-title">The Bridge</h2>
+                            <h2 class="section-title">From Incident Response to Infrastructure</h2>
                         </div>
                         <p>
-                            <strong>18 months as a Police Constable</strong> taught me that security isn't about perfect systems — it's about rapid assessment, decisive action, and knowing what to protect first when everything's happening at once.
+                            <strong>18 months as a Police Constable</strong> in the Metropolitan Police taught me skills that don't appear on technical assessments: translating complex requirements for non-expert audiences, making decisions under pressure with incomplete information, and working within compliance frameworks where documentation actually matters.
                         </p>
                         <p>
-                            I carried that mindset into DevSecOps. In <strong>8 months of AI-accelerated learning</strong>, I built 20 production-grade projects — not tutorials, but real infrastructure with real security controls. I used Claude and ChatGPT to understand documentation and debug configurations, then implemented and tested everything hands-on.
+                            I carried that into DevSecOps through <strong>intensive training at Cyber Agoge</strong>, led by a Global CISO with experience at KPMG, BAE Systems, and UK Government. Then 8 months of building — using Claude and ChatGPT to accelerate learning, but implementing and testing everything hands-on across <strong>20 production-grade projects</strong>.
                         </p>
                         <p>
-                            The result: practical experience across AWS, Azure, GCP, Kubernetes, Terraform, and security automation. Plus something CS graduates don't bring — the instinct to treat every deployment like a potential incident.
+                            The combination is unusual: an <strong>LLM in Criminal Justice</strong> from Northumbria plus AWS, Terraform, and Kubernetes certifications. Security automation plus the instinct to document everything like it might end up in court. Technical depth plus the ability to explain why a deployment is blocked without making enemies.
                         </p>
                         <div class="about__highlight">
                             <div class="about__stat">
@@ -1091,25 +1178,36 @@
         <!-- Featured Projects -->
         <section id="featured">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header fade-in">
                     <p class="section-label">Featured Work</p>
                     <h2 class="section-title">Selected Projects</h2>
                     <p class="section-description">
-                        Five projects that demonstrate core DevSecOps capabilities — from security-integrated pipelines to multi-cloud orchestration.
+                        Five projects demonstrating core DevSecOps capabilities — from security-integrated pipelines to multi-cloud orchestration.
                     </p>
                 </div>
 
                 <div class="featured-projects">
                     <!-- Project 1: DevSecOps Pipeline -->
-                    <article class="featured-project">
+                    <article class="featured-project fade-in">
+                        <div class="featured-project__visual">
+                            <img src="./project-5.png" alt="DevSecOps Pipeline architecture showing CI/CD stages with security scanning integration" loading="lazy">
+                        </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">01</span>
                             <h3 class="featured-project__title">DevSecOps Pipeline</h3>
-                            <p class="featured-project__description">
-                                <strong>The Challenge:</strong> Security scanning typically happens too late — after deployment, after the vulnerability is already in production.<br><br>
-                                <strong>The Solution:</strong> A CI/CD pipeline with security gates at every stage. Code commits trigger SAST scanning with Semgrep and secrets detection with Gitleaks. Container builds run through Trivy for vulnerability scanning. Infrastructure changes pass through Checkov before Terraform applies. GuardDuty monitors runtime, feeding alerts to Splunk SIEM.<br><br>
-                                <strong>The Outcome:</strong> Vulnerabilities caught at commit, not in production.
-                            </p>
+                            <p class="featured-project__hook">Security scanning that catches vulnerabilities at commit, not in production.</p>
+                            
+                            <dl class="featured-project__details">
+                                <dt>Challenge</dt>
+                                <dd>Security scanning typically happens too late — after deployment, after the vulnerability is already live.</dd>
+                                
+                                <dt>Solution</dt>
+                                <dd>CI/CD pipeline with security gates at every stage. SAST with Semgrep, secrets detection with Gitleaks, container scanning with Trivy, infrastructure validation with Checkov. GuardDuty monitors runtime, feeding alerts to Splunk SIEM.</dd>
+                                
+                                <dt>Outcome</dt>
+                                <dd>Shift-left security — nothing reaches production without passing automated checks.</dd>
+                            </dl>
+                            
                             <div class="featured-project__tech">
                                 <span class="tech-tag">Amazon EKS</span>
                                 <span class="tech-tag">Terraform</span>
@@ -1129,21 +1227,29 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="featured-project__visual">
-                            <img src="./project-5.png" alt="DevSecOps Pipeline architecture showing CI/CD stages with security scanning integration" class="project-screenshot" loading="lazy">
-                        </div>
                     </article>
 
                     <!-- Project 2: Multi-Cloud Orchestration -->
-                    <article class="featured-project">
+                    <article class="featured-project fade-in">
+                        <div class="featured-project__visual">
+                            <img src="./project-20.png" alt="Multi-Cloud Orchestration showing infrastructure deployment across AWS, Azure, and GCP" loading="lazy">
+                        </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">02</span>
                             <h3 class="featured-project__title">Multi-Cloud Orchestration</h3>
-                            <p class="featured-project__description">
-                                <strong>The Challenge:</strong> Vendor lock-in limits flexibility and negotiating power. Most teams know one cloud well and struggle to move workloads.<br><br>
-                                <strong>The Solution:</strong> Terraform modules that abstract cloud-specific resources behind a consistent interface. One workflow deploys equivalent infrastructure to AWS, Azure, or GCP. Ansible handles configuration management. Datadog provides unified observability across all three clouds.<br><br>
-                                <strong>The Outcome:</strong> True portability — same code, any cloud.
-                            </p>
+                            <p class="featured-project__hook">True cloud portability — same code, any provider.</p>
+                            
+                            <dl class="featured-project__details">
+                                <dt>Challenge</dt>
+                                <dd>Vendor lock-in limits flexibility and negotiating power. Most teams know one cloud well and struggle to move workloads.</dd>
+                                
+                                <dt>Solution</dt>
+                                <dd>Terraform modules abstracting cloud-specific resources behind a consistent interface. One workflow deploys equivalent infrastructure to AWS, Azure, or GCP. Ansible handles configuration management. Datadog provides unified observability.</dd>
+                                
+                                <dt>Outcome</dt>
+                                <dd>Deploy to any cloud with the same codebase — portability without rewriting infrastructure.</dd>
+                            </dl>
+                            
                             <div class="featured-project__tech">
                                 <span class="tech-tag">Terraform</span>
                                 <span class="tech-tag">Ansible</span>
@@ -1162,21 +1268,29 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="featured-project__visual">
-                            <img src="./project-20.png" alt="Multi-Cloud Orchestration showing infrastructure deployment across AWS, Azure, and GCP" class="project-screenshot" loading="lazy">
-                        </div>
                     </article>
 
                     <!-- Project 3: MCP Security Ops -->
-                    <article class="featured-project">
+                    <article class="featured-project fade-in">
+                        <div class="featured-project__visual">
+                            <img src="./project-10.png" alt="MCP Security Operations showing automated incident response workflow with GuardDuty and Slack" loading="lazy">
+                        </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">03</span>
                             <h3 class="featured-project__title">MCP Security Operations</h3>
-                            <p class="featured-project__description">
-                                <strong>The Challenge:</strong> When GuardDuty detects a threat, the clock starts. Manual response means minutes or hours before containment — plenty of time for lateral movement.<br><br>
-                                <strong>The Solution:</strong> A Model Context Protocol server that gives AI assistants direct access to security operations. GuardDuty findings trigger EventBridge rules. Lambda functions isolate compromised EC2 instances automatically. The team gets Slack notifications with full context.<br><br>
-                                <strong>The Outcome:</strong> Threat detected → server isolated → team notified in seconds, not hours.
-                            </p>
+                            <p class="featured-project__hook">Threat detected → server isolated → team notified in seconds, not hours.</p>
+                            
+                            <dl class="featured-project__details">
+                                <dt>Challenge</dt>
+                                <dd>When GuardDuty detects a threat, the clock starts. Manual response means minutes or hours before containment — plenty of time for lateral movement.</dd>
+                                
+                                <dt>Solution</dt>
+                                <dd>Model Context Protocol server giving AI assistants direct access to security operations. GuardDuty findings trigger EventBridge rules. Lambda functions isolate compromised EC2 instances automatically. Slack notifications with full context.</dd>
+                                
+                                <dt>Outcome</dt>
+                                <dd>Automated containment at machine speed. Human review happens after the threat is isolated, not before.</dd>
+                            </dl>
+                            
                             <div class="featured-project__tech">
                                 <span class="tech-tag">MCP</span>
                                 <span class="tech-tag">AWS GuardDuty</span>
@@ -1194,21 +1308,29 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="featured-project__visual">
-                            <img src="./project-10.png" alt="MCP Security Operations showing automated incident response workflow with GuardDuty and Slack" class="project-screenshot" loading="lazy">
-                        </div>
                     </article>
 
                     <!-- Project 4: AI Developer Platform -->
-                    <article class="featured-project">
+                    <article class="featured-project fade-in">
+                        <div class="featured-project__visual">
+                            <img src="./project-17.png" alt="AI Developer Platform showing Backstage portal with EKS, MLflow, and ArgoCD integration" loading="lazy">
+                        </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">04</span>
                             <h3 class="featured-project__title">AI Developer Platform</h3>
-                            <p class="featured-project__description">
-                                <strong>The Challenge:</strong> Developers waste time navigating scattered documentation, provisioning environments, and tracking ML experiments across disconnected tools.<br><br>
-                                <strong>The Solution:</strong> An internal developer platform built on Backstage. Service catalog centralises documentation and ownership. ArgoCD handles GitOps deployments through Helm charts. MLflow tracks experiments and model versions. Hybrid EKS/ECS architecture balances cost and performance.<br><br>
-                                <strong>The Outcome:</strong> One platform for services, deployments, and ML — reducing onboarding friction.
-                            </p>
+                            <p class="featured-project__hook">One portal for services, deployments, and ML experiments.</p>
+                            
+                            <dl class="featured-project__details">
+                                <dt>Challenge</dt>
+                                <dd>Developers waste time navigating scattered documentation, provisioning environments, and tracking ML experiments across disconnected tools.</dd>
+                                
+                                <dt>Solution</dt>
+                                <dd>Internal developer platform on Backstage. Service catalog centralises documentation and ownership. ArgoCD handles GitOps deployments via Helm. MLflow tracks experiments and model versions. Hybrid EKS/ECS architecture balances cost and performance.</dd>
+                                
+                                <dt>Outcome</dt>
+                                <dd>Single pane of glass for platform teams — reduced onboarding friction and scattered tooling.</dd>
+                            </dl>
+                            
                             <div class="featured-project__tech">
                                 <span class="tech-tag">Backstage</span>
                                 <span class="tech-tag">Amazon EKS</span>
@@ -1227,21 +1349,29 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="featured-project__visual">
-                            <img src="./project-17.png" alt="AI Developer Platform showing Backstage portal with EKS, MLflow, and ArgoCD integration" class="project-screenshot" loading="lazy">
-                        </div>
                     </article>
 
                     <!-- Project 5: AI Governance Framework -->
-                    <article class="featured-project">
+                    <article class="featured-project fade-in">
+                        <div class="featured-project__visual">
+                            <img src="./project-19.png" alt="AI Governance Framework showing Sentinel and OPA Gatekeeper policy enforcement" loading="lazy">
+                        </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">05</span>
                             <h3 class="featured-project__title">AI Governance Framework</h3>
-                            <p class="featured-project__description">
-                                <strong>The Challenge:</strong> ML teams deploy models without guardrails. Unapproved models, missing documentation, compliance violations — all discovered after the fact.<br><br>
-                                <strong>The Solution:</strong> Policy-as-code enforcement at two levels. HCP Terraform Sentinel policies validate infrastructure before provisioning. OPA Gatekeeper admission controllers enforce model requirements at Kubernetes deployment time. Nothing deploys without passing governance checks.<br><br>
-                                <strong>The Outcome:</strong> Compliance by default — unapproved models blocked before they reach production.
-                            </p>
+                            <p class="featured-project__hook">Compliance by default — unapproved models blocked before production.</p>
+                            
+                            <dl class="featured-project__details">
+                                <dt>Challenge</dt>
+                                <dd>ML teams deploy models without guardrails. Unapproved models, missing documentation, compliance violations — all discovered after the fact.</dd>
+                                
+                                <dt>Solution</dt>
+                                <dd>Policy-as-code at two levels. HCP Terraform Sentinel validates infrastructure before provisioning. OPA Gatekeeper admission controllers enforce model requirements at Kubernetes deployment. Nothing deploys without passing governance checks.</dd>
+                                
+                                <dt>Outcome</dt>
+                                <dd>Governance enforcement shifted from audit findings to deployment gates.</dd>
+                            </dl>
+                            
                             <div class="featured-project__tech">
                                 <span class="tech-tag">HCP Terraform</span>
                                 <span class="tech-tag">Sentinel</span>
@@ -1258,9 +1388,6 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="featured-project__visual">
-                            <img src="./project-19.png" alt="AI Governance Framework showing Sentinel and OPA Gatekeeper policy enforcement" class="project-screenshot" loading="lazy">
-                        </div>
                     </article>
                 </div>
             </div>
@@ -1269,7 +1396,7 @@
         <!-- All Projects -->
         <section id="projects">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header fade-in">
                     <p class="section-label">All Work</p>
                     <h2 class="section-title">Complete Project Archive</h2>
                     <p class="section-description">
@@ -1277,7 +1404,7 @@
                     </p>
                 </div>
 
-                <div class="project-filters" role="group" aria-label="Filter projects by category">
+                <div class="project-filters fade-in" role="group" aria-label="Filter projects by category">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="security">Security</button>
                     <button class="filter-btn" data-filter="kubernetes">Kubernetes</button>
@@ -1288,7 +1415,7 @@
 
                 <div class="projects-grid">
                     <!-- Project 20 -->
-                    <article class="project-card" data-categories="kubernetes">
+                    <article class="project-card fade-in stagger-1" data-categories="kubernetes">
                         <div class="project-card__header">
                             <span class="project-card__number">#20</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -1296,7 +1423,7 @@
                             </svg>
                         </div>
                         <h3 class="project-card__title">Multi-Cloud Orchestration</h3>
-                        <p class="project-card__description">Infrastructure deployment to AWS, Azure, and GCP using Terraform. Ansible configuration. Datadog monitoring.</p>
+                        <p class="project-card__description">Deploy identical infrastructure to AWS, Azure, or GCP from one codebase. Terraform modules abstract provider differences, Ansible handles config, Datadog unifies monitoring.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Terraform</span>
                             <span class="tech-tag">Ansible</span>
@@ -1308,15 +1435,15 @@
                     </article>
 
                     <!-- Project 19 -->
-                    <article class="project-card" data-categories="security kubernetes">
+                    <article class="project-card fade-in stagger-2" data-categories="security kubernetes">
                         <div class="project-card__header">
                             <span class="project-card__number">#19</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">AI Governance Framework</h3>
-                        <p class="project-card__description">HCP Terraform Sentinel policies and OPA Gatekeeper on AWS EKS. Policy enforcement for ML workloads.</p>
+                        <p class="project-card__description">Policy-as-code at two levels: Sentinel validates infrastructure before Terraform applies, OPA Gatekeeper enforces admission control at deployment. Nothing reaches the cluster without passing governance.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Sentinel</span>
                             <span class="tech-tag">OPA</span>
@@ -1328,15 +1455,15 @@
                     </article>
 
                     <!-- Project 18 -->
-                    <article class="project-card" data-categories="kubernetes observability">
+                    <article class="project-card fade-in stagger-3" data-categories="kubernetes observability">
                         <div class="project-card__header">
                             <span class="project-card__number">#18</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 2v20M2 12h20"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">AI FinOps Platform</h3>
-                        <p class="project-card__description">Apache Kafka streaming on Kubernetes using Strimzi. OpenCost, Prometheus, and Grafana for cost tracking.</p>
+                        <p class="project-card__description">Real-time cost visibility for AI workloads. Kafka streams GPU and API cost events through Strimzi on Kubernetes. OpenCost, Prometheus, and Grafana surface where the money's going.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Kafka</span>
                             <span class="tech-tag">Strimzi</span>
@@ -1348,15 +1475,17 @@
                     </article>
 
                     <!-- Project 17 -->
-                    <article class="project-card" data-categories="kubernetes cicd">
+                    <article class="project-card fade-in stagger-4" data-categories="kubernetes cicd">
                         <div class="project-card__header">
                             <span class="project-card__number">#17</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">AI Developer Platform</h3>
-                        <p class="project-card__description">Internal Developer Platform using Backstage on hybrid EKS/ECS. MLflow integration with ArgoCD GitOps.</p>
+                        <p class="project-card__description">One portal for services, deployments, and ML experiments. Backstage service catalog on hybrid EKS/ECS, MLflow for experiment tracking, ArgoCD GitOps with Helm.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Backstage</span>
                             <span class="tech-tag">MLflow</span>
@@ -1368,7 +1497,7 @@
                     </article>
 
                     <!-- Project 16 -->
-                    <article class="project-card" data-categories="cicd">
+                    <article class="project-card fade-in stagger-5" data-categories="cicd">
                         <div class="project-card__header">
                             <span class="project-card__number">#16</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -1376,7 +1505,7 @@
                             </svg>
                         </div>
                         <h3 class="project-card__title">Portfolio Pipeline</h3>
-                        <p class="project-card__description">CI/CD pipeline with GitHub Actions for static site deployment. AWS S3 hosting with CloudFront CDN.</p>
+                        <p class="project-card__description">This site's infrastructure. GitHub Actions CI/CD deploys to S3 with CloudFront CDN. Terraform manages all AWS resources. Automated cache invalidation on deploy.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">GitHub Actions</span>
                             <span class="tech-tag">S3</span>
@@ -1388,15 +1517,15 @@
                     </article>
 
                     <!-- Project 15 -->
-                    <article class="project-card" data-categories="kubernetes observability">
+                    <article class="project-card fade-in stagger-6" data-categories="kubernetes observability">
                         <div class="project-card__header">
                             <span class="project-card__number">#15</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">Observability Stack</h3>
-                        <p class="project-card__description">Elasticsearch cluster on Kubernetes with ELK stack. Prometheus and Grafana for metrics. Multi-environment Terraform.</p>
+                        <p class="project-card__description">Full observability across environments. Elasticsearch cluster with Logstash and Kibana for logs, Fluentd DaemonSet for collection, Prometheus and Grafana for metrics. Terraform manages multi-env deployment.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">ELK Stack</span>
                             <span class="tech-tag">Prometheus</span>
@@ -1408,15 +1537,15 @@
                     </article>
 
                     <!-- Project 14 -->
-                    <article class="project-card" data-categories="cicd">
+                    <article class="project-card fade-in stagger-7" data-categories="cicd">
                         <div class="project-card__header">
                             <span class="project-card__number">#14</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">3-Tier Serverless App</h3>
-                        <p class="project-card__description">Full-stack serverless e-commerce with React, Lambda, API Gateway, and DynamoDB. Infrastructure as Code.</p>
+                        <h3 class="project-card__title">3-Tier Serverless Application</h3>
+                        <p class="project-card__description">Full-stack serverless e-commerce. React frontend on S3/CloudFront, Lambda functions via API Gateway, DynamoDB database. All infrastructure defined in Terraform.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Lambda</span>
                             <span class="tech-tag">DynamoDB</span>
@@ -1428,7 +1557,7 @@
                     </article>
 
                     <!-- Project 13 -->
-                    <article class="project-card" data-categories="cicd">
+                    <article class="project-card fade-in stagger-8" data-categories="cicd">
                         <div class="project-card__header">
                             <span class="project-card__number">#13</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -1436,7 +1565,7 @@
                             </svg>
                         </div>
                         <h3 class="project-card__title">CI/CD Pipeline Comparison</h3>
-                        <p class="project-card__description">Jenkins and GitLab CI pipeline implementations. Terraform infrastructure provisioning for both.</p>
+                        <p class="project-card__description">Side-by-side implementation of Jenkins vs GitLab CI. Jenkins on EC2 deploying Flask, GitLab deploying Node.js. Same outcomes, different approaches — documenting trade-offs.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Jenkins</span>
                             <span class="tech-tag">GitLab CI</span>
@@ -1448,15 +1577,16 @@
                     </article>
 
                     <!-- Project 12 -->
-                    <article class="project-card" data-categories="ai kubernetes security">
+                    <article class="project-card fade-in stagger-1" data-categories="ai kubernetes security">
                         <div class="project-card__header">
                             <span class="project-card__number">#12</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">MCP Meets K8s</h3>
-                        <p class="project-card__description">Model Context Protocol server for Kubernetes operations. AWS EKS with ArgoCD GitOps and security scanning.</p>
+                        <p class="project-card__description">AI-assisted Kubernetes operations. MCP server connects Claude to cluster management — deployments, scaling, troubleshooting. Security scanning with Checkov, Semgrep, Gitleaks, and Trivy baked into CI.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">MCP</span>
                             <span class="tech-tag">EKS</span>
@@ -1468,15 +1598,15 @@
                     </article>
 
                     <!-- Project 11 -->
-                    <article class="project-card" data-categories="ai security">
+                    <article class="project-card fade-in stagger-2" data-categories="ai security">
                         <div class="project-card__header">
                             <span class="project-card__number">#11</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">MCP IaC Security</h3>
-                        <p class="project-card__description">MCP server analysing Checkov findings and generating Terraform fixes. GitHub Actions integration.</p>
+                        <p class="project-card__description">AI-powered infrastructure remediation. MCP server analyses Checkov findings and generates Terraform fixes. Shifts security from "finding problems" to "suggesting solutions."</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">MCP</span>
                             <span class="tech-tag">Checkov</span>
@@ -1488,15 +1618,15 @@
                     </article>
 
                     <!-- Project 10 -->
-                    <article class="project-card" data-categories="ai security">
+                    <article class="project-card fade-in stagger-3" data-categories="ai security">
                         <div class="project-card__header">
                             <span class="project-card__number">#10</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">MCP Security Ops</h3>
-                        <p class="project-card__description">Model Context Protocol server for AWS GuardDuty incident response. Automated EC2 isolation with Slack alerts.</p>
+                        <p class="project-card__description">Automated incident response at machine speed. MCP server for GuardDuty findings triggers Lambda isolation of compromised EC2 instances. Slack webhooks for real-time alerts.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">MCP</span>
                             <span class="tech-tag">GuardDuty</span>
@@ -1508,18 +1638,18 @@
                     </article>
 
                     <!-- Project 9 -->
-                    <article class="project-card" data-categories="kubernetes cicd observability">
+                    <article class="project-card fade-in stagger-4" data-categories="kubernetes cicd observability">
                         <div class="project-card__header">
                             <span class="project-card__number">#09</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">GitOps Monitoring</h3>
-                        <p class="project-card__description">GitOps workflow with ArgoCD on AWS EKS. Prometheus and Grafana deployment via Helm.</p>
+                        <p class="project-card__description">GitOps workflow with ArgoCD on EKS. Prometheus and Grafana deployed via Helm. Git commits trigger automatic cluster sync — infrastructure changes tracked like code.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">ArgoCD</span>
-                            <span class="tech-tag">EKS</span>
+                            <span class="tech-tag">Prometheus</span>
                             <span class="tech-tag">Helm</span>
                         </div>
                         <a href="https://github.com/nfroze/Project-9-GitOps-ArgoCD-Monitoring" target="_blank" rel="noopener noreferrer" class="project-card__link">
@@ -1528,15 +1658,15 @@
                     </article>
 
                     <!-- Project 8 -->
-                    <article class="project-card" data-categories="ai">
+                    <article class="project-card fade-in stagger-5" data-categories="ai">
                         <div class="project-card__header">
                             <span class="project-card__number">#08</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">Slack MCP Assistant</h3>
-                        <p class="project-card__description">Model Context Protocol server connecting Claude Desktop to Slack. Message retrieval and summarisation.</p>
+                        <p class="project-card__description">MCP server connecting Claude Desktop to Slack workspaces. Retrieves and summarises messages using Slack Web API. Natural language interface to team communications.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">MCP</span>
                             <span class="tech-tag">Slack API</span>
@@ -1548,19 +1678,19 @@
                     </article>
 
                     <!-- Project 7 -->
-                    <article class="project-card" data-categories="security">
+                    <article class="project-card fade-in stagger-6" data-categories="security">
                         <div class="project-card__header">
                             <span class="project-card__number">#07</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">Live Threat Modeling</h3>
-                        <p class="project-card__description">Security analysis of real-world winner disclosure practices. OSINT techniques and privacy controls.</p>
+                        <p class="project-card__description">Real-world OSINT exercise. Analysed a gaming platform's winner disclosure practices, demonstrated social engineering vectors, proposed privacy controls. STRIDE methodology on a live target.</p>
                         <div class="project-card__tech">
+                            <span class="tech-tag">STRIDE</span>
                             <span class="tech-tag">OSINT</span>
-                            <span class="tech-tag">Social Engineering</span>
-                            <span class="tech-tag">Privacy</span>
+                            <span class="tech-tag">Threat Modeling</span>
                         </div>
                         <a href="https://github.com/nfroze/Project-7-Live-Threat-Modeling" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
@@ -1568,15 +1698,19 @@
                     </article>
 
                     <!-- Project 6 -->
-                    <article class="project-card" data-categories="ai">
+                    <article class="project-card fade-in stagger-7" data-categories="ai">
                         <div class="project-card__header">
                             <span class="project-card__number">#06</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <line x1="21.17" y1="8" x2="12" y2="8"/>
+                                <line x1="3.95" y1="6.06" x2="8.54" y2="14"/>
+                                <line x1="10.88" y1="21.94" x2="15.46" y2="14"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">AI Chrome Extension</h3>
-                        <p class="project-card__description">Chrome extension for LinkedIn post analysis using Claude AI. TLDR summaries and spam scoring.</p>
+                        <p class="project-card__description">Chrome extension for LinkedIn post analysis using Claude API. Generates TLDR summaries and satirical commentary with spam scoring. Browser-based AI integration.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Chrome Extension</span>
                             <span class="tech-tag">Claude API</span>
@@ -1588,19 +1722,19 @@
                     </article>
 
                     <!-- Project 5 -->
-                    <article class="project-card" data-categories="security kubernetes cicd">
+                    <article class="project-card fade-in stagger-8" data-categories="security kubernetes cicd">
                         <div class="project-card__header">
                             <span class="project-card__number">#05</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">DevSecOps Pipeline</h3>
-                        <p class="project-card__description">Node.js on Amazon EKS with security scanning throughout CI/CD. GuardDuty and Splunk SIEM integration.</p>
+                        <p class="project-card__description">End-to-end security pipeline. Node.js app deployed to EKS with automated scanning at every stage — SAST, secrets, containers, IaC. GuardDuty runtime protection, Splunk SIEM integration.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">EKS</span>
-                            <span class="tech-tag">Checkov</span>
-                            <span class="tech-tag">Trivy</span>
+                            <span class="tech-tag">GuardDuty</span>
+                            <span class="tech-tag">Splunk</span>
                         </div>
                         <a href="https://github.com/nfroze/Project-5-DevSecOps-Pipeline" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
@@ -1608,15 +1742,15 @@
                     </article>
 
                     <!-- Project 4 -->
-                    <article class="project-card" data-categories="security">
+                    <article class="project-card fade-in stagger-1" data-categories="security">
                         <div class="project-card__header">
                             <span class="project-card__number">#04</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">Threat Modeling</h3>
-                        <p class="project-card__description">Threat modeling for healthcare platform using STRIDE framework and MITRE ATT&CK mapping.</p>
+                        <p class="project-card__description">Healthcare platform security assessment. STRIDE threat modeling with MITRE ATT&CK mapping. Three attack scenarios analysed with risk scores and incident response playbooks.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">STRIDE</span>
                             <span class="tech-tag">MITRE ATT&CK</span>
@@ -1628,15 +1762,15 @@
                     </article>
 
                     <!-- Project 3 -->
-                    <article class="project-card" data-categories="security cicd">
+                    <article class="project-card fade-in stagger-2" data-categories="security cicd">
                         <div class="project-card__header">
                             <span class="project-card__number">#03</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">IaC Security</h3>
-                        <p class="project-card__description">Terraform AWS infrastructure with Checkov security scanning. IAM groups with least privilege.</p>
+                        <p class="project-card__description">Terraform AWS infrastructure with Checkov scanning baked into CI. IAM groups with least privilege by default. Non-compliant infrastructure blocked before it exists.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Terraform</span>
                             <span class="tech-tag">Checkov</span>
@@ -1648,18 +1782,18 @@
                     </article>
 
                     <!-- Project 2 -->
-                    <article class="project-card" data-categories="security">
+                    <article class="project-card fade-in stagger-3" data-categories="security">
                         <div class="project-card__header">
                             <span class="project-card__number">#02</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">Container Security</h3>
-                        <p class="project-card__description">Docker image scanning with Trivy and ECS deployment. OWASP ZAP dynamic testing via ALB.</p>
+                        <p class="project-card__description">Docker image scanning with Trivy, deployment to ECS, OWASP ZAP dynamic testing against the running application via ALB. Security testing at build and runtime.</p>
                         <div class="project-card__tech">
-                            <span class="tech-tag">Docker</span>
                             <span class="tech-tag">Trivy</span>
+                            <span class="tech-tag">ECS</span>
                             <span class="tech-tag">OWASP ZAP</span>
                         </div>
                         <a href="https://github.com/nfroze/Project-2-Container-Security" target="_blank" rel="noopener noreferrer" class="project-card__link">
@@ -1668,15 +1802,15 @@
                     </article>
 
                     <!-- Project 1 -->
-                    <article class="project-card" data-categories="security cicd">
+                    <article class="project-card fade-in stagger-4" data-categories="security cicd">
                         <div class="project-card__header">
                             <span class="project-card__number">#01</span>
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">Secure CI/CD</h3>
-                        <p class="project-card__description">CI/CD pipeline with security scanning for Node.js. GitHub Actions with Semgrep, npm audit, Gitleaks.</p>
+                        <p class="project-card__description">Foundation pipeline with security scanning for Node.js. GitHub Actions running Semgrep SAST, npm audit for dependencies, Gitleaks for secrets. Security gates on every push.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">GitHub Actions</span>
                             <span class="tech-tag">Semgrep</span>
@@ -1691,76 +1825,67 @@
         </section>
 
         <!-- Tech Stack -->
-        <section id="stack">
+        <section id="skills">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-label">Technology</p>
-                    <h2 class="section-title">Technical Stack</h2>
-                    <p class="section-description">
-                        Tools and technologies used across 20 production-grade projects.
-                    </p>
+                <div class="section-header fade-in">
+                    <p class="section-label">Expertise</p>
+                    <h2 class="section-title">Tech Stack</h2>
                 </div>
 
                 <div class="tech-stack-grid">
-                    <div class="tech-category">
+                    <div class="tech-category fade-in stagger-1">
                         <h3 class="tech-category__title">Cloud Platforms</h3>
                         <div class="tech-category__items">
                             <span class="tech-item">AWS</span>
                             <span class="tech-item">Azure</span>
                             <span class="tech-item">GCP</span>
-                            <span class="tech-item">EKS</span>
-                            <span class="tech-item">ECS</span>
-                            <span class="tech-item">Lambda</span>
-                            <span class="tech-item">S3</span>
-                            <span class="tech-item">CloudFront</span>
                         </div>
                     </div>
 
-                    <div class="tech-category">
+                    <div class="tech-category fade-in stagger-2">
                         <h3 class="tech-category__title">Infrastructure as Code</h3>
                         <div class="tech-category__items">
                             <span class="tech-item">Terraform</span>
-                            <span class="tech-item">Ansible</span>
                             <span class="tech-item">CloudFormation</span>
-                            <span class="tech-item">Sentinel</span>
+                            <span class="tech-item">Ansible</span>
+                            <span class="tech-item">Helm</span>
                         </div>
                     </div>
 
-                    <div class="tech-category">
+                    <div class="tech-category fade-in stagger-3">
                         <h3 class="tech-category__title">Containers & Orchestration</h3>
                         <div class="tech-category__items">
                             <span class="tech-item">Kubernetes</span>
                             <span class="tech-item">Docker</span>
-                            <span class="tech-item">Helm</span>
-                            <span class="tech-item">ArgoCD</span>
-                            <span class="tech-item">Strimzi</span>
+                            <span class="tech-item">Amazon EKS</span>
+                            <span class="tech-item">Amazon ECS</span>
                         </div>
                     </div>
 
-                    <div class="tech-category">
-                        <h3 class="tech-category__title">CI/CD</h3>
+                    <div class="tech-category fade-in stagger-4">
+                        <h3 class="tech-category__title">CI/CD & GitOps</h3>
                         <div class="tech-category__items">
                             <span class="tech-item">GitHub Actions</span>
-                            <span class="tech-item">Jenkins</span>
                             <span class="tech-item">GitLab CI</span>
+                            <span class="tech-item">Jenkins</span>
                             <span class="tech-item">ArgoCD</span>
                         </div>
                     </div>
 
-                    <div class="tech-category">
+                    <div class="tech-category fade-in stagger-5">
                         <h3 class="tech-category__title">Security Tools</h3>
                         <div class="tech-category__items">
                             <span class="tech-item">Checkov</span>
                             <span class="tech-item">Trivy</span>
                             <span class="tech-item">Semgrep</span>
                             <span class="tech-item">Gitleaks</span>
-                            <span class="tech-item">OWASP ZAP</span>
-                            <span class="tech-item">GuardDuty</span>
                             <span class="tech-item">OPA Gatekeeper</span>
+                            <span class="tech-item">Sentinel</span>
+                            <span class="tech-item">GuardDuty</span>
                         </div>
                     </div>
 
-                    <div class="tech-category">
+                    <div class="tech-category fade-in stagger-6">
                         <h3 class="tech-category__title">Observability</h3>
                         <div class="tech-category__items">
                             <span class="tech-item">Prometheus</span>
@@ -1779,13 +1904,13 @@
         <!-- Certifications -->
         <section id="certifications">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header fade-in">
                     <p class="section-label">Credentials</p>
                     <h2 class="section-title">Certifications</h2>
                 </div>
 
                 <div class="certs-grid">
-                    <a href="https://www.credly.com/badges/6eed0ee7-9ba5-4ccb-8684-182caf9e43e9" target="_blank" rel="noopener noreferrer" class="cert-card">
+                    <a href="https://www.credly.com/badges/6eed0ee7-9ba5-4ccb-8684-182caf9e43e9" target="_blank" rel="noopener noreferrer" class="cert-card fade-in stagger-1">
                         <div class="cert-card__icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -1796,7 +1921,7 @@
                         <span class="cert-card__verify">Verify on Credly →</span>
                     </a>
 
-                    <a href="https://www.credly.com/badges/0d35cd29-3f0e-4700-b296-14bc2844d903" target="_blank" rel="noopener noreferrer" class="cert-card">
+                    <a href="https://www.credly.com/badges/0d35cd29-3f0e-4700-b296-14bc2844d903" target="_blank" rel="noopener noreferrer" class="cert-card fade-in stagger-2">
                         <div class="cert-card__icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -1807,7 +1932,7 @@
                         <span class="cert-card__verify">Verify on Credly →</span>
                     </a>
 
-                    <a href="https://www.credly.com/badges/d977e3e9-cfb7-432a-b47e-0cd7804341b8" target="_blank" rel="noopener noreferrer" class="cert-card">
+                    <a href="https://www.credly.com/badges/d977e3e9-cfb7-432a-b47e-0cd7804341b8" target="_blank" rel="noopener noreferrer" class="cert-card fade-in stagger-3">
                         <div class="cert-card__icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
@@ -1824,7 +1949,7 @@
         </section>
 
         <!-- Contact -->
-        <section id="contact" class="contact">
+        <section id="contact" class="contact fade-in">
             <div class="container">
                 <h2 class="contact__title">Let's Connect</h2>
                 <p class="contact__subtitle">Open to DevOps, Cloud, Platform, and DevSecOps roles. UK-based, open to relocation and remote.</p>
@@ -1941,6 +2066,42 @@
                 nav.style.background = 'rgba(10, 10, 11, 0.8)';
             }
         });
+
+        // Scroll-triggered fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            fadeObserver.observe(el);
+        });
+
+        // Typing effect for hero subtitle
+        const typingText = document.getElementById('typing-text');
+        const textToType = 'DevSecOps Engineer';
+        let charIndex = 0;
+
+        function typeCharacter() {
+            if (charIndex < textToType.length) {
+                typingText.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeCharacter, 80);
+            }
+        }
+
+        // Start typing after hero animations complete
+        setTimeout(typeCharacter, 800);
     </script>
 </body>
 </html>
