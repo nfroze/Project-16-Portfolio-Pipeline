@@ -450,33 +450,9 @@
             background: var(--bg-secondary);
         }
 
-        .about__grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about__image-wrapper {
-            position: relative;
-        }
-
-        .about__image {
-            width: 100%;
-            aspect-ratio: 1;
-            background: var(--bg-tertiary);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .about__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .about__content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .about__content h3 {
@@ -504,6 +480,7 @@
             margin-top: 2rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border);
+            justify-content: center;
         }
 
         .about__stat {
@@ -966,16 +943,6 @@
                 justify-content: center;
             }
 
-            .about__grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about__image-wrapper {
-                max-width: 300px;
-                margin: 0 auto;
-            }
-
             .certs-grid {
                 grid-template-columns: 1fr;
             }
@@ -1132,43 +1099,36 @@
         <!-- About Section -->
         <section id="about" class="fade-in">
             <div class="container">
-                <div class="about__grid">
-                    <div class="about__image-wrapper">
-                        <div class="about__image">
-                            <img src="./headshot.png" alt="Noah Frost - DevSecOps Engineer" loading="lazy">
-                        </div>
+                <div class="about__content">
+                    <div class="section-header">
+                        <p class="section-label">About</p>
+                        <h2 class="section-title">From Incident Response to Infrastructure</h2>
                     </div>
-                    <div class="about__content">
-                        <div class="section-header">
-                            <p class="section-label">About</p>
-                            <h2 class="section-title">From Incident Response to Infrastructure</h2>
+                    <p>
+                        <strong>18 months as a Police Constable</strong> in the Metropolitan Police taught me skills that don't appear on technical assessments: translating complex requirements for non-expert audiences, making decisions under pressure with incomplete information, and working within compliance frameworks where documentation actually matters.
+                    </p>
+                    <p>
+                        I carried that into DevSecOps through <strong>intensive training at Cyber Agoge</strong>, led by a Global CISO with experience at KPMG, BAE Systems, and UK Government. Then 8 months of building — using Claude and ChatGPT to accelerate learning, but implementing and testing everything hands-on across <strong>20 production-grade projects</strong>.
+                    </p>
+                    <p>
+                        The combination is unusual: an <strong>LLM in Criminal Justice</strong> from Northumbria plus AWS, Terraform, and Kubernetes certifications. Security automation plus the instinct to document everything like it might end up in court. Technical depth plus the ability to explain why a deployment is blocked without making enemies.
+                    </p>
+                    <div class="about__highlight">
+                        <div class="about__stat">
+                            <div class="about__stat-value">20</div>
+                            <div class="about__stat-label">Projects Built</div>
                         </div>
-                        <p>
-                            <strong>18 months as a Police Constable</strong> in the Metropolitan Police taught me skills that don't appear on technical assessments: translating complex requirements for non-expert audiences, making decisions under pressure with incomplete information, and working within compliance frameworks where documentation actually matters.
-                        </p>
-                        <p>
-                            I carried that into DevSecOps through <strong>intensive training at Cyber Agoge</strong>, led by a Global CISO with experience at KPMG, BAE Systems, and UK Government. Then 8 months of building — using Claude and ChatGPT to accelerate learning, but implementing and testing everything hands-on across <strong>20 production-grade projects</strong>.
-                        </p>
-                        <p>
-                            The combination is unusual: an <strong>LLM in Criminal Justice</strong> from Northumbria plus AWS, Terraform, and Kubernetes certifications. Security automation plus the instinct to document everything like it might end up in court. Technical depth plus the ability to explain why a deployment is blocked without making enemies.
-                        </p>
-                        <div class="about__highlight">
-                            <div class="about__stat">
-                                <div class="about__stat-value">20</div>
-                                <div class="about__stat-label">Projects Built</div>
-                            </div>
-                            <div class="about__stat">
-                                <div class="about__stat-value">8</div>
-                                <div class="about__stat-label">Months Learning</div>
-                            </div>
-                            <div class="about__stat">
-                                <div class="about__stat-value">3</div>
-                                <div class="about__stat-label">Certifications</div>
-                            </div>
-                            <div class="about__stat">
-                                <div class="about__stat-value">3</div>
-                                <div class="about__stat-label">Cloud Platforms</div>
-                            </div>
+                        <div class="about__stat">
+                            <div class="about__stat-value">8</div>
+                            <div class="about__stat-label">Months Learning</div>
+                        </div>
+                        <div class="about__stat">
+                            <div class="about__stat-value">3</div>
+                            <div class="about__stat-label">Certifications</div>
+                        </div>
+                        <div class="about__stat">
+                            <div class="about__stat-value">3</div>
+                            <div class="about__stat-label">Cloud Platforms</div>
                         </div>
                     </div>
                 </div>
@@ -1182,7 +1142,7 @@
                     <p class="section-label">Featured Work</p>
                     <h2 class="section-title">Selected Projects</h2>
                     <p class="section-description">
-                        Five projects demonstrating core DevSecOps capabilities — from security-integrated pipelines to multi-cloud orchestration.
+                        Six projects demonstrating core DevSecOps capabilities — security-integrated pipelines, policy automation, and AI-assisted operations.
                     </p>
                 </div>
 
@@ -1229,38 +1189,36 @@
                         </div>
                     </article>
 
-                    <!-- Project 2: Multi-Cloud Orchestration -->
+                    <!-- Project 2: AI Governance Framework -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-20.png" alt="Multi-Cloud Orchestration showing infrastructure deployment across AWS, Azure, and GCP" loading="lazy">
+                            <img src="./project-19.png" alt="AI Governance Framework showing Sentinel and OPA Gatekeeper policy enforcement" loading="lazy">
                         </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">02</span>
-                            <h3 class="featured-project__title">Multi-Cloud Orchestration</h3>
-                            <p class="featured-project__hook">True cloud portability — same code, any provider.</p>
+                            <h3 class="featured-project__title">AI Governance Framework</h3>
+                            <p class="featured-project__hook">Compliance by default — unapproved workloads blocked before production.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>Vendor lock-in limits flexibility and negotiating power. Most teams know one cloud well and struggle to move workloads.</dd>
+                                <dd>Teams deploy workloads without guardrails. Missing documentation, compliance violations, security gaps — all discovered after the fact during audits.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Terraform modules abstracting cloud-specific resources behind a consistent interface. One workflow deploys equivalent infrastructure to AWS, Azure, or GCP. Ansible handles configuration management. Datadog provides unified observability.</dd>
+                                <dd>Policy-as-code at two levels. Sentinel policies validate infrastructure before Terraform applies. OPA Gatekeeper admission controllers enforce requirements at Kubernetes deployment. Nothing deploys without passing governance checks.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Deploy to any cloud with the same codebase — portability without rewriting infrastructure.</dd>
+                                <dd>Governance enforcement shifted from audit findings to deployment gates.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
-                                <span class="tech-tag">Terraform</span>
-                                <span class="tech-tag">Ansible</span>
-                                <span class="tech-tag">AWS</span>
-                                <span class="tech-tag">Azure</span>
-                                <span class="tech-tag">GCP</span>
-                                <span class="tech-tag">Datadog</span>
-                                <span class="tech-tag">GitHub Actions</span>
+                                <span class="tech-tag">Sentinel</span>
+                                <span class="tech-tag">OPA Gatekeeper</span>
+                                <span class="tech-tag">Amazon EKS</span>
+                                <span class="tech-tag">Kubernetes</span>
+                                <span class="tech-tag">HCP Terraform</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-20-Multi-Cloud-Orchestration" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/Project-19-AI-Governance-Framework" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1277,7 +1235,7 @@
                         </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">03</span>
-                            <h3 class="featured-project__title">MCP Security Operations</h3>
+                            <h3 class="featured-project__title">AI-Assisted Security Operations</h3>
                             <p class="featured-project__hook">Threat detected → server isolated → team notified in seconds, not hours.</p>
                             
                             <dl class="featured-project__details">
@@ -1285,10 +1243,10 @@
                                 <dd>When GuardDuty detects a threat, the clock starts. Manual response means minutes or hours before containment — plenty of time for lateral movement.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Model Context Protocol server giving AI assistants direct access to security operations. GuardDuty findings trigger EventBridge rules. Lambda functions isolate compromised EC2 instances automatically. Slack notifications with full context.</dd>
+                                <dd>Integrated GuardDuty alerts with Lambda functions to automatically isolate compromised EC2 instances. Built Slack notification pipeline providing real-time security alerts to operations team.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Automated containment at machine speed. Human review happens after the threat is isolated, not before.</dd>
+                                <dd>Reduced manual intervention in initial incident triage through automated containment workflows.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
@@ -1310,38 +1268,38 @@
                         </div>
                     </article>
 
-                    <!-- Project 4: AI Developer Platform -->
+                    <!-- Project 4: Kubernetes Security Platform -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-17.png" alt="AI Developer Platform showing Backstage portal with EKS, MLflow, and ArgoCD integration" loading="lazy">
+                            <img src="./project-12.png" alt="Kubernetes Security Platform showing EKS cluster with ArgoCD, security scanning, and monitoring" loading="lazy">
                         </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">04</span>
-                            <h3 class="featured-project__title">AI Developer Platform</h3>
-                            <p class="featured-project__hook">One portal for services, deployments, and ML experiments.</p>
+                            <h3 class="featured-project__title">Kubernetes Security Platform</h3>
+                            <p class="featured-project__hook">Comprehensive DevSecOps platform with monitoring, security scanning, and GitOps deployment.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>Developers waste time navigating scattered documentation, provisioning environments, and tracking ML experiments across disconnected tools.</dd>
+                                <dd>Kubernetes environments need security at every layer — infrastructure, containers, code, secrets — with visibility into what's running.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Internal developer platform on Backstage. Service catalog centralises documentation and ownership. ArgoCD handles GitOps deployments via Helm. MLflow tracks experiments and model versions. Hybrid EKS/ECS architecture balances cost and performance.</dd>
+                                <dd>Deployed EKS cluster with ArgoCD for GitOps, Prometheus and Grafana for observability. Integrated Checkov, Semgrep, Gitleaks, and Trivy into CI pipeline catching vulnerabilities across code, secrets, containers, and IaC.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Single pane of glass for platform teams — reduced onboarding friction and scattered tooling.</dd>
+                                <dd>Security scanning runs on every pull request with automated pass/fail gating. Nothing merges without clean scans.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
-                                <span class="tech-tag">Backstage</span>
                                 <span class="tech-tag">Amazon EKS</span>
-                                <span class="tech-tag">Amazon ECS</span>
-                                <span class="tech-tag">MLflow</span>
                                 <span class="tech-tag">ArgoCD</span>
-                                <span class="tech-tag">Helm</span>
-                                <span class="tech-tag">Terraform</span>
+                                <span class="tech-tag">Prometheus</span>
+                                <span class="tech-tag">Grafana</span>
+                                <span class="tech-tag">Checkov</span>
+                                <span class="tech-tag">Trivy</span>
+                                <span class="tech-tag">MCP</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-17-AI-Developer-Platform" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/Project-12-MCP-Meets-K8s" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1351,36 +1309,76 @@
                         </div>
                     </article>
 
-                    <!-- Project 5: AI Governance Framework -->
+                    <!-- Project 5: Threat Modelling Framework -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-19.png" alt="AI Governance Framework showing Sentinel and OPA Gatekeeper policy enforcement" loading="lazy">
+                            <img src="./project-4.png" alt="Threat Modeling Framework showing STRIDE methodology and MITRE ATT&CK mapping" loading="lazy">
                         </div>
                         <div class="featured-project__content">
                             <span class="featured-project__number">05</span>
-                            <h3 class="featured-project__title">AI Governance Framework</h3>
-                            <p class="featured-project__hook">Compliance by default — unapproved models blocked before production.</p>
+                            <h3 class="featured-project__title">Threat Modelling Framework</h3>
+                            <p class="featured-project__hook">Security assessment methodology applied to healthcare application architecture.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>ML teams deploy models without guardrails. Unapproved models, missing documentation, compliance violations — all discovered after the fact.</dd>
+                                <dd>Healthcare applications handle sensitive data but security assessments often happen too late — after architecture decisions are locked in.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Policy-as-code at two levels. HCP Terraform Sentinel validates infrastructure before provisioning. OPA Gatekeeper admission controllers enforce model requirements at Kubernetes deployment. Nothing deploys without passing governance checks.</dd>
+                                <dd>Applied STRIDE methodology to identify threats across application components and data flows. Mapped identified threats to MITRE ATT&CK framework for standardised threat intelligence.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Governance enforcement shifted from audit findings to deployment gates.</dd>
+                                <dd>Risk assessment documentation with prioritised remediation recommendations. Security thinking integrated into design phase.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
-                                <span class="tech-tag">HCP Terraform</span>
-                                <span class="tech-tag">Sentinel</span>
-                                <span class="tech-tag">OPA Gatekeeper</span>
-                                <span class="tech-tag">Amazon EKS</span>
-                                <span class="tech-tag">Kubernetes</span>
+                                <span class="tech-tag">STRIDE</span>
+                                <span class="tech-tag">MITRE ATT&CK</span>
+                                <span class="tech-tag">Threat Modeling</span>
+                                <span class="tech-tag">Risk Assessment</span>
+                                <span class="tech-tag">Healthcare</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-19-AI-Governance-Framework" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/Project-4-Threat-Modeling" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                    View on GitHub
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 6: AI-Assisted IaC Security -->
+                    <article class="featured-project fade-in">
+                        <div class="featured-project__visual">
+                            <img src="./project-11.png" alt="IaC Security showing Checkov scanning and automated remediation" loading="lazy">
+                        </div>
+                        <div class="featured-project__content">
+                            <span class="featured-project__number">06</span>
+                            <h3 class="featured-project__title">AI-Assisted IaC Security</h3>
+                            <p class="featured-project__hook">Infrastructure security scanning with AI-powered analysis and remediation suggestions.</p>
+                            
+                            <dl class="featured-project__details">
+                                <dt>Challenge</dt>
+                                <dd>Security scanners find problems but don't fix them. Engineers waste time researching remediation for each finding.</dd>
+                                
+                                <dt>Solution</dt>
+                                <dd>Implemented Checkov scanning for Terraform configurations with custom policy rules. Built automated IAM least-privilege analysis identifying over-permissioned roles. Created pre-commit hooks preventing insecure infrastructure reaching version control.</dd>
+                                
+                                <dt>Outcome</dt>
+                                <dd>Security issues blocked before they reach the repository. AI-assisted remediation cuts fix time significantly.</dd>
+                            </dl>
+                            
+                            <div class="featured-project__tech">
+                                <span class="tech-tag">MCP</span>
+                                <span class="tech-tag">Checkov</span>
+                                <span class="tech-tag">Terraform</span>
+                                <span class="tech-tag">IAM</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Pre-commit</span>
+                            </div>
+                            <div class="featured-project__links">
+                                <a href="https://github.com/nfroze/Project-11-MCP-IaC-Security" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
