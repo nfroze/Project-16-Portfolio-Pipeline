@@ -1108,14 +1108,14 @@
                         <strong>18 months as a Police Constable</strong> in the Metropolitan Police taught me skills that don't appear on technical assessments: translating complex requirements for non-expert audiences, making decisions under pressure with incomplete information, and working within compliance frameworks where documentation actually matters.
                     </p>
                     <p>
-                        I carried that into DevSecOps through <strong>intensive training at Cyber Agoge</strong>, led by a Global CISO with experience at KPMG, BAE Systems, and UK Government. Then 8 months of building — using Claude and ChatGPT to accelerate learning, but implementing and testing everything hands-on across <strong>20 production-grade projects</strong>.
+                        I carried that into DevSecOps through <strong>intensive training at Cyber Agoge</strong>, led by a Global CISO with experience at KPMG, BAE Systems, and UK Government. Then 8 months of building — using Claude and ChatGPT to accelerate learning, but implementing and testing everything hands-on across <strong>15 production-grade projects</strong>.
                     </p>
                     <p>
                         The combination is unusual: an <strong>LLM in Criminal Justice</strong> from Northumbria plus AWS, Terraform, and Kubernetes certifications. Security automation plus the instinct to document everything like it might end up in court. Technical depth plus the ability to explain why a deployment is blocked without making enemies.
                     </p>
                     <div class="about__highlight">
                         <div class="about__stat">
-                            <div class="about__stat-value">20</div>
+                            <div class="about__stat-value">15</div>
                             <div class="about__stat-label">Projects Built</div>
                         </div>
                         <div class="about__stat">
@@ -1147,39 +1147,39 @@
                 </div>
 
                 <div class="featured-projects">
-                    <!-- Project 1: DevSecOps Pipeline -->
+                    <!-- Project 1: End-to-End DevSecOps Pipeline -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-5.png" alt="DevSecOps Pipeline architecture showing CI/CD stages with security scanning integration" loading="lazy">
+                            <img src="./End-to-End-DevSecOps-Pipeline-with-SIEM-Integration.png" alt="DevSecOps Pipeline architecture showing four-stage CI/CD with security scanning and Splunk SIEM integration" loading="lazy">
                         </div>
                         <div class="featured-project__content">
-                            <span class="featured-project__number">01</span>
-                            <h3 class="featured-project__title">DevSecOps Pipeline</h3>
-                            <p class="featured-project__hook">Security scanning that catches vulnerabilities at commit, not in production.</p>
+                            
+                            <h3 class="featured-project__title">End-to-End DevSecOps Pipeline with SIEM Integration</h3>
+                            <p class="featured-project__hook">Production-grade security automation across the entire software delivery lifecycle with threat detection streamed to Splunk.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>Security scanning typically happens too late — after deployment, after the vulnerability is already live.</dd>
+                                <dd>Security scanning typically happens too late — after deployment, after the vulnerability is already live. And when threats are detected at runtime, findings sit in separate consoles.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>CI/CD pipeline with security gates at every stage. SAST with Semgrep, secrets detection with Gitleaks, container scanning with Trivy, infrastructure validation with Checkov. GuardDuty monitors runtime, feeding alerts to Splunk SIEM.</dd>
+                                <dd>Four-stage pipeline with Semgrep SAST, Trivy SCA, Gitleaks secrets detection, and Checkov IaC scanning. Security gates block non-compliant code. GuardDuty findings and CloudWatch logs stream via Lambda to Splunk Cloud. Hardened Kubernetes manifests: non-root containers, read-only filesystem, all capabilities dropped.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Shift-left security — nothing reaches production without passing automated checks.</dd>
+                                <dd>Shift-left security with runtime visibility — vulnerabilities caught at commit, threats detected in production visible in SIEM.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
                                 <span class="tech-tag">Amazon EKS</span>
                                 <span class="tech-tag">Terraform</span>
                                 <span class="tech-tag">GitHub Actions</span>
-                                <span class="tech-tag">Checkov</span>
-                                <span class="tech-tag">Trivy</span>
                                 <span class="tech-tag">Semgrep</span>
+                                <span class="tech-tag">Trivy</span>
+                                <span class="tech-tag">Checkov</span>
                                 <span class="tech-tag">GuardDuty</span>
                                 <span class="tech-tag">Splunk</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-5-DevSecOps-Pipeline" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/End-to-End-DevSecOps-Pipeline-with-SIEM-Integration" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1189,36 +1189,36 @@
                         </div>
                     </article>
 
-                    <!-- Project 2: AI Governance Framework -->
+                    <!-- Project 2: AI/ML Governance with Policy-as-Code -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-19.png" alt="AI Governance Framework showing Sentinel and OPA Gatekeeper policy enforcement" loading="lazy">
+                            <img src="./AI-ML-Governance-with-Policy-as-Code.png" alt="Dual-layer policy enforcement with Sentinel and OPA Gatekeeper" loading="lazy">
                         </div>
                         <div class="featured-project__content">
-                            <span class="featured-project__number">02</span>
-                            <h3 class="featured-project__title">AI Governance Framework</h3>
-                            <p class="featured-project__hook">Compliance by default — unapproved workloads blocked before production.</p>
+                            
+                            <h3 class="featured-project__title">AI/ML Governance with Policy-as-Code</h3>
+                            <p class="featured-project__hook">Dual-layer policy enforcement preventing non-compliant infrastructure and untracked ML models reaching production.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>Teams deploy workloads without guardrails. Missing documentation, compliance violations, security gaps — all discovered after the fact during audits.</dd>
+                                <dd>Teams deploy workloads without guardrails. Expensive GPU instances provisioned without approval, ML models deployed without version tracking, compliance violations discovered during audits.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Policy-as-code at two levels. Sentinel policies validate infrastructure before Terraform applies. OPA Gatekeeper admission controllers enforce requirements at Kubernetes deployment. Nothing deploys without passing governance checks.</dd>
+                                <dd>Sentinel policies for HCP Terraform block GPU instance provisioning and enforce AI resource tagging pre-apply. OPA Gatekeeper admission webhooks require ML tracking labels and model registry URLs on Kubernetes deployments. Controls mapped to EU AI Act compliance requirements.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Governance enforcement shifted from audit findings to deployment gates.</dd>
+                                <dd>Governance enforcement shifted from audit findings to deployment gates. Nothing provisions or deploys without passing policy checks.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
                                 <span class="tech-tag">Sentinel</span>
                                 <span class="tech-tag">OPA Gatekeeper</span>
+                                <span class="tech-tag">HCP Terraform</span>
                                 <span class="tech-tag">Amazon EKS</span>
                                 <span class="tech-tag">Kubernetes</span>
-                                <span class="tech-tag">HCP Terraform</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-19-AI-Governance-Framework" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/AI-ML-Governance-with-Policy-as-Code" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1228,25 +1228,25 @@
                         </div>
                     </article>
 
-                    <!-- Project 3: MCP Security Ops -->
+                    <!-- Project 3: MCP Security Incident Response System -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-10.png" alt="MCP Security Operations showing automated incident response workflow with GuardDuty and Slack" loading="lazy">
+                            <img src="./MCP-Security-Incident-Response-System.png" alt="AI-powered security operations with GuardDuty integration and automated EC2 isolation" loading="lazy">
                         </div>
                         <div class="featured-project__content">
-                            <span class="featured-project__number">03</span>
-                            <h3 class="featured-project__title">AI-Assisted Security Operations</h3>
-                            <p class="featured-project__hook">Threat detected → server isolated → team notified in seconds, not hours.</p>
+                            
+                            <h3 class="featured-project__title">MCP Security Incident Response System</h3>
+                            <p class="featured-project__hook">AI-powered security operations enabling natural language investigation and automated containment of AWS threats.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>When GuardDuty detects a threat, the clock starts. Manual response means minutes or hours before containment — plenty of time for lateral movement.</dd>
+                                <dd>When GuardDuty detects a threat, the clock starts. Manual response means navigating AWS console, understanding findings, deciding on containment — plenty of time for lateral movement.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Integrated GuardDuty alerts with Lambda functions to automatically isolate compromised EC2 instances. Built Slack notification pipeline providing real-time security alerts to operations team.</dd>
+                                <dd>Two parallel workflows: automated containment path triggers Lambda via EventBridge to isolate compromised EC2 instances via security group swap. MCP server exposes five tools to Claude Desktop for investigation — findings list, deep-dive analysis, incident reports, isolation status, and restoration.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Reduced manual intervention in initial incident triage through automated containment workflows.</dd>
+                                <dd>Automated containment at machine speed. Natural language investigation without console context-switching. Slack notifications for real-time visibility.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
@@ -1254,11 +1254,11 @@
                                 <span class="tech-tag">AWS GuardDuty</span>
                                 <span class="tech-tag">EventBridge</span>
                                 <span class="tech-tag">Lambda</span>
-                                <span class="tech-tag">Slack API</span>
+                                <span class="tech-tag">Slack</span>
                                 <span class="tech-tag">Node.js</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-10-MCP-Security-Ops" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/MCP-Security-Incident-Response-System" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1268,38 +1268,38 @@
                         </div>
                     </article>
 
-                    <!-- Project 4: Kubernetes Security Platform -->
+                    <!-- Project 4: MCP Kubernetes Health Monitor -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-12.png" alt="Kubernetes Security Platform showing EKS cluster with ArgoCD, security scanning, and monitoring" loading="lazy">
+                            <img src="./MCP-Kubernetes-Health-Monitor.png" alt="Kubernetes cluster health monitoring with MCP, ArgoCD, and full security scanning pipeline" loading="lazy">
                         </div>
                         <div class="featured-project__content">
-                            <span class="featured-project__number">04</span>
-                            <h3 class="featured-project__title">Kubernetes Security Platform</h3>
-                            <p class="featured-project__hook">Comprehensive DevSecOps platform with monitoring, security scanning, and GitOps deployment.</p>
+                            
+                            <h3 class="featured-project__title">MCP Kubernetes Health Monitor</h3>
+                            <p class="featured-project__hook">Natural language querying of Kubernetes cluster health with GitOps automation and full DevSecOps pipeline.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>Kubernetes environments need security at every layer — infrastructure, containers, code, secrets — with visibility into what's running.</dd>
+                                <dd>Platform teams need cluster visibility without constant context-switching between kubectl, dashboards, and alerting systems. Security scanning needs to catch issues before they reach the cluster.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Deployed EKS cluster with ArgoCD for GitOps, Prometheus and Grafana for observability. Integrated Checkov, Semgrep, Gitleaks, and Trivy into CI pipeline catching vulnerabilities across code, secrets, containers, and IaC.</dd>
+                                <dd>EKS cluster with ArgoCD automated sync and self-healing, Prometheus and Grafana observability. Checkov, Semgrep, Gitleaks, and Trivy integrated into GitHub Actions. MCP server exposes cluster health tools: unhealthy pods, resource usage, comprehensive health reports.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Security scanning runs on every pull request with automated pass/fail gating. Nothing merges without clean scans.</dd>
+                                <dd>Natural language cluster operations. Security scanning on every pull request with automated gating. GitOps ensuring cluster matches Git.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
+                                <span class="tech-tag">MCP</span>
                                 <span class="tech-tag">Amazon EKS</span>
                                 <span class="tech-tag">ArgoCD</span>
                                 <span class="tech-tag">Prometheus</span>
                                 <span class="tech-tag">Grafana</span>
                                 <span class="tech-tag">Checkov</span>
                                 <span class="tech-tag">Trivy</span>
-                                <span class="tech-tag">MCP</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-12-MCP-Meets-K8s" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/MCP-Kubernetes-Health-Monitor" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1309,36 +1309,36 @@
                         </div>
                     </article>
 
-                    <!-- Project 5: Threat Modelling Framework -->
+                    <!-- Project 5: Healthcare Threat Model -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-4.png" alt="Threat Modeling Framework showing STRIDE methodology and MITRE ATT&CK mapping" loading="lazy">
+                            <img src="./Healthcare-Threat-Model-STRIDE-Analysis.png" alt="STRIDE threat modeling for HIPAA-compliant healthcare platform" loading="lazy">
                         </div>
                         <div class="featured-project__content">
-                            <span class="featured-project__number">05</span>
-                            <h3 class="featured-project__title">Threat Modelling Framework</h3>
-                            <p class="featured-project__hook">Security assessment methodology applied to healthcare application architecture.</p>
+                            
+                            <h3 class="featured-project__title">Healthcare Threat Model: STRIDE Analysis</h3>
+                            <p class="featured-project__hook">Comprehensive security threat model for HIPAA-compliant healthcare platform handling PHI and PII.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>Healthcare applications handle sensitive data but security assessments often happen too late — after architecture decisions are locked in.</dd>
+                                <dd>Healthcare applications handle sensitive data but security assessments often happen too late — after architecture decisions are locked in. Abstract recommendations don't translate to developer action.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Applied STRIDE methodology to identify threats across application components and data flows. Mapped identified threats to MITRE ATT&CK framework for standardised threat intelligence.</dd>
+                                <dd>Applied STRIDE methodology to identify 15 prioritised threats across authentication, data protection, API security, and infrastructure. Mapped threats to MITRE ATT&CK framework and HIPAA Security Rule requirements (§164.308–312).</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Risk assessment documentation with prioritised remediation recommendations. Security thinking integrated into design phase.</dd>
+                                <dd>Remediation guidance with working code examples bridging security architects and developers. Eight high-risk threats with immediate remediation, seven medium-risk for 30-day planning.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
                                 <span class="tech-tag">STRIDE</span>
                                 <span class="tech-tag">MITRE ATT&CK</span>
+                                <span class="tech-tag">HIPAA</span>
                                 <span class="tech-tag">Threat Modeling</span>
                                 <span class="tech-tag">Risk Assessment</span>
-                                <span class="tech-tag">Healthcare</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-4-Threat-Modeling" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/Healthcare-Threat-Model-STRIDE-Analysis" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1348,37 +1348,36 @@
                         </div>
                     </article>
 
-                    <!-- Project 6: AI-Assisted IaC Security -->
+                    <!-- Project 6: MCP-Powered IaC Security Remediation -->
                     <article class="featured-project fade-in">
                         <div class="featured-project__visual">
-                            <img src="./project-11.png" alt="IaC Security showing Checkov scanning and automated remediation" loading="lazy">
+                            <img src="./MCP-Powered-IaC-Security-Remediation.png" alt="AI-native infrastructure security with Checkov integration and automated remediation" loading="lazy">
                         </div>
                         <div class="featured-project__content">
-                            <span class="featured-project__number">06</span>
-                            <h3 class="featured-project__title">AI-Assisted IaC Security</h3>
-                            <p class="featured-project__hook">Infrastructure security scanning with AI-powered analysis and remediation suggestions.</p>
+                            
+                            <h3 class="featured-project__title">MCP-Powered IaC Security Remediation</h3>
+                            <p class="featured-project__hook">AI-native infrastructure security connecting Claude Desktop directly to Checkov scan results for conversational analysis.</p>
                             
                             <dl class="featured-project__details">
                                 <dt>Challenge</dt>
-                                <dd>Security scanners find problems but don't fix them. Engineers waste time researching remediation for each finding.</dd>
+                                <dd>Security scanners find problems but don't fix them. Engineers waste time researching remediation for each finding, context-switching between scan results and documentation.</dd>
                                 
                                 <dt>Solution</dt>
-                                <dd>Implemented Checkov scanning for Terraform configurations with custom policy rules. Built automated IAM least-privilege analysis identifying over-permissioned roles. Created pre-commit hooks preventing insecure infrastructure reaching version control.</dd>
+                                <dd>MCP server with tools for scan analysis, remediation generation, security reports, and source code retrieval. Remediation engine with pre-built fixes for 20+ common AWS security checks covering S3, RDS, EC2, IAM, VPC. GitHub Actions artifacts for historical retrieval.</dd>
                                 
                                 <dt>Outcome</dt>
-                                <dd>Security issues blocked before they reach the repository. AI-assisted remediation cuts fix time significantly.</dd>
+                                <dd>Conversational security analysis. Ask about findings, get remediation code. Audit trail through GitHub Actions artifacts.</dd>
                             </dl>
                             
                             <div class="featured-project__tech">
                                 <span class="tech-tag">MCP</span>
                                 <span class="tech-tag">Checkov</span>
+                                <span class="tech-tag">GitHub Actions</span>
                                 <span class="tech-tag">Terraform</span>
-                                <span class="tech-tag">IAM</span>
                                 <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Pre-commit</span>
                             </div>
                             <div class="featured-project__links">
-                                <a href="https://github.com/nfroze/Project-11-MCP-IaC-Security" target="_blank" rel="noopener noreferrer" class="featured-project__link">
+                                <a href="https://github.com/nfroze/MCP-Powered-IaC-Security-Remediation" target="_blank" rel="noopener noreferrer" class="featured-project__link">
                                     View on GitHub
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1398,7 +1397,7 @@
                     <p class="section-label">All Work</p>
                     <h2 class="section-title">Complete Project Archive</h2>
                     <p class="section-description">
-                        20 projects built in 8 months. Each repository includes documentation, architecture decisions, and working code.
+                        15 projects built in 8 months. Each repository includes documentation, architecture decisions, and working code.
                     </p>
                 </div>
 
@@ -1412,409 +1411,305 @@
                 </div>
 
                 <div class="projects-grid">
-                    <!-- Project 20 -->
-                    <article class="project-card fade-in stagger-1" data-categories="kubernetes">
+                    <!-- Project 15: Multi-Cloud Infrastructure Orchestration -->
+                    <article class="project-card fade-in stagger-1" data-categories="cicd kubernetes">
                         <div class="project-card__header">
-                            <span class="project-card__number">#20</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">Multi-Cloud Orchestration</h3>
-                        <p class="project-card__description">Deploy identical infrastructure to AWS, Azure, or GCP from one codebase. Terraform modules abstract provider differences, Ansible handles config, Datadog unifies monitoring.</p>
+                        <h3 class="project-card__title">Multi-Cloud Infrastructure Orchestration</h3>
+                        <p class="project-card__description">Unified deployment pipeline provisioning identical web infrastructure across AWS, Azure, and GCP from single GitHub Actions workflow. Terraform with provider-specific state backends, Ansible for OS-adaptive configuration, Datadog for unified monitoring.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Terraform</span>
                             <span class="tech-tag">Ansible</span>
                             <span class="tech-tag">Datadog</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-20-Multi-Cloud-Orchestration" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/Multi-Cloud-Infrastructure-Orchestration" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 19 -->
+                    <!-- Project 14: AI/ML Governance with Policy-as-Code -->
                     <article class="project-card fade-in stagger-2" data-categories="security kubernetes">
                         <div class="project-card__header">
-                            <span class="project-card__number">#19</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">AI Governance Framework</h3>
-                        <p class="project-card__description">Policy-as-code at two levels: Sentinel validates infrastructure before Terraform applies, OPA Gatekeeper enforces admission control at deployment. Nothing reaches the cluster without passing governance.</p>
+                        <h3 class="project-card__title">AI/ML Governance with Policy-as-Code</h3>
+                        <p class="project-card__description">Dual-layer policy enforcement: Sentinel blocks non-compliant Terraform plans pre-apply, OPA Gatekeeper rejects ML deployments missing governance labels at Kubernetes admission. EU AI Act compliance built-in.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Sentinel</span>
-                            <span class="tech-tag">OPA</span>
+                            <span class="tech-tag">OPA Gatekeeper</span>
                             <span class="tech-tag">EKS</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-19-AI-Governance-Framework" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/AI-ML-Governance-with-Policy-as-Code" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 18 -->
+                    <!-- Project 13: AI FinOps Platform -->
                     <article class="project-card fade-in stagger-3" data-categories="kubernetes observability">
                         <div class="project-card__header">
-                            <span class="project-card__number">#18</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M12 2v20M2 12h20"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">AI FinOps Platform</h3>
-                        <p class="project-card__description">Real-time cost visibility for AI workloads. Kafka streams GPU and API cost events through Strimzi on Kubernetes. OpenCost, Prometheus, and Grafana surface where the money's going.</p>
+                        <p class="project-card__description">Real-time cost observability for AI/ML infrastructure. Kafka 3-broker cluster via Strimzi streams GPU utilisation and API spend events. OpenCost, Prometheus, and Grafana for anomaly detection when traditional billing cycles are too slow.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Kafka</span>
                             <span class="tech-tag">Strimzi</span>
                             <span class="tech-tag">OpenCost</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-18-AI-FinOps-Platform" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/AI-FinOps-Platform" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 17 -->
+                    <!-- Project 12: AI/ML Internal Developer Platform -->
                     <article class="project-card fade-in stagger-4" data-categories="kubernetes cicd">
                         <div class="project-card__header">
-                            <span class="project-card__number">#17</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                                 <line x1="8" y1="21" x2="16" y2="21"/>
                                 <line x1="12" y1="17" x2="12" y2="21"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">AI Developer Platform</h3>
-                        <p class="project-card__description">One portal for services, deployments, and ML experiments. Backstage service catalog on hybrid EKS/ECS, MLflow for experiment tracking, ArgoCD GitOps with Helm.</p>
+                        <h3 class="project-card__title">AI/ML Internal Developer Platform</h3>
+                        <p class="project-card__description">Self-service portal for GPU workloads with cost governance. Backstage templates with budget verification, MLflow for experiment tracking, ArgoCD for GitOps. Hybrid EKS/ECS architecture — Kubernetes for ML tools, Fargate for cost tracking.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Backstage</span>
                             <span class="tech-tag">MLflow</span>
                             <span class="tech-tag">ArgoCD</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-17-AI-Developer-Platform" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/AI-ML-Internal-Developer-Platform" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 16 -->
+                    <!-- Project 11: Portfolio CI/CD Pipeline -->
                     <article class="project-card fade-in stagger-5" data-categories="cicd">
                         <div class="project-card__header">
-                            <span class="project-card__number">#16</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">Portfolio Pipeline</h3>
-                        <p class="project-card__description">This site's infrastructure. GitHub Actions CI/CD deploys to S3 with CloudFront CDN. Terraform manages all AWS resources. Automated cache invalidation on deploy.</p>
+                        <h3 class="project-card__title">Portfolio CI/CD Pipeline</h3>
+                        <p class="project-card__description">This site's infrastructure. GitHub Actions deploys to S3 with CloudFront CDN on every push. Route 53 DNS, ACM SSL certificates, path-based cache invalidation. Terraform manages all AWS resources.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">GitHub Actions</span>
                             <span class="tech-tag">S3</span>
                             <span class="tech-tag">CloudFront</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-16-Portfolio-Pipeline" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/Portfolio-CI-CD-Pipeline" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 15 -->
+                    <!-- Project 10: Kubernetes Observability Stack -->
                     <article class="project-card fade-in stagger-6" data-categories="kubernetes observability">
                         <div class="project-card__header">
-                            <span class="project-card__number">#15</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">Observability Stack</h3>
-                        <p class="project-card__description">Full observability across environments. Elasticsearch cluster with Logstash and Kibana for logs, Fluentd DaemonSet for collection, Prometheus and Grafana for metrics. Terraform manages multi-env deployment.</p>
+                        <h3 class="project-card__title">Kubernetes Observability Stack with ELK and Prometheus</h3>
+                        <p class="project-card__description">Complete logging and metrics on EKS. Fluentd DaemonSet tails container logs to Elasticsearch via Logstash. Prometheus and Grafana for metrics. Environment-specific Terraform sizing — dev vs production configurations.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">ELK Stack</span>
                             <span class="tech-tag">Prometheus</span>
                             <span class="tech-tag">Grafana</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-15-Observability-Stack" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/Kubernetes-Observability-Stack-with-ELK-and-Prometheus" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 14 -->
+                    <!-- Project 9: Serverless E-Commerce Platform -->
                     <article class="project-card fade-in stagger-7" data-categories="cicd">
                         <div class="project-card__header">
-                            <span class="project-card__number">#14</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">3-Tier Serverless Application</h3>
-                        <p class="project-card__description">Full-stack serverless e-commerce. React frontend on S3/CloudFront, Lambda functions via API Gateway, DynamoDB database. All infrastructure defined in Terraform.</p>
+                        <h3 class="project-card__title">Serverless E-Commerce Platform</h3>
+                        <p class="project-card__description">Three-tier serverless architecture. React frontend via CloudFront/S3, single-purpose Lambda functions behind API Gateway, DynamoDB with on-demand capacity. Modular Terraform with explicit dependencies.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Lambda</span>
                             <span class="tech-tag">DynamoDB</span>
                             <span class="tech-tag">React</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-14-3-Tier-Serverless-Application" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/Serverless-E-Commerce-Platform" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 13 -->
+                    <!-- Project 8: CI/CD Pipeline Comparison -->
                     <article class="project-card fade-in stagger-8" data-categories="cicd">
                         <div class="project-card__header">
-                            <span class="project-card__number">#13</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">CI/CD Pipeline Comparison</h3>
-                        <p class="project-card__description">Side-by-side implementation of Jenkins vs GitLab CI. Jenkins on EC2 deploying Flask, GitLab deploying Node.js. Same outcomes, different approaches — documenting trade-offs.</p>
+                        <h3 class="project-card__title">CI/CD Pipeline Comparison: Jenkins vs GitLab CI</h3>
+                        <p class="project-card__description">Side-by-side implementation deploying to shared infrastructure. Jenkins on EC2 with declarative pipeline for Flask, GitLab CI with Docker stages for Node.js. SSH-based deployment reflecting common migration patterns.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">Jenkins</span>
                             <span class="tech-tag">GitLab CI</span>
                             <span class="tech-tag">Terraform</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-13-CI-CD-Pipeline-Comparison" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/CI-CD-Pipeline-Comparison-Jenkins-vs-GitLab-CI" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 12 -->
+                    <!-- Project 7: MCP Kubernetes Health Monitor -->
                     <article class="project-card fade-in stagger-1" data-categories="ai kubernetes security">
                         <div class="project-card__header">
-                            <span class="project-card__number">#12</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <circle cx="12" cy="12" r="10"/>
                                 <path d="M12 6v6l4 2"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">MCP Meets K8s</h3>
-                        <p class="project-card__description">AI-assisted Kubernetes operations. MCP server connects Claude to cluster management — deployments, scaling, troubleshooting. Security scanning with Checkov, Semgrep, Gitleaks, and Trivy baked into CI.</p>
+                        <h3 class="project-card__title">MCP Kubernetes Health Monitor</h3>
+                        <p class="project-card__description">Natural language cluster health querying via MCP server. EKS with ArgoCD automated sync, Prometheus/Grafana observability. Full security pipeline: Checkov, Semgrep, Gitleaks, Trivy in GitHub Actions.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">MCP</span>
                             <span class="tech-tag">EKS</span>
                             <span class="tech-tag">ArgoCD</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-12-MCP-Meets-K8s" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/MCP-Kubernetes-Health-Monitor" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 11 -->
+                    <!-- Project 6: MCP-Powered IaC Security Remediation -->
                     <article class="project-card fade-in stagger-2" data-categories="ai security">
                         <div class="project-card__header">
-                            <span class="project-card__number">#11</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">MCP IaC Security</h3>
-                        <p class="project-card__description">AI-powered infrastructure remediation. MCP server analyses Checkov findings and generates Terraform fixes. Shifts security from "finding problems" to "suggesting solutions."</p>
+                        <h3 class="project-card__title">MCP-Powered IaC Security Remediation</h3>
+                        <p class="project-card__description">AI-native infrastructure security connecting Claude Desktop to Checkov results. MCP server with remediation engine for 20+ AWS security checks. GitHub Actions artifacts for audit trail.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">MCP</span>
                             <span class="tech-tag">Checkov</span>
                             <span class="tech-tag">Node.js</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-11-MCP-IaC-Security" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/MCP-Powered-IaC-Security-Remediation" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 10 -->
+                    <!-- Project 5: MCP Security Incident Response System -->
                     <article class="project-card fade-in stagger-3" data-categories="ai security">
                         <div class="project-card__header">
-                            <span class="project-card__number">#10</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">MCP Security Ops</h3>
-                        <p class="project-card__description">Automated incident response at machine speed. MCP server for GuardDuty findings triggers Lambda isolation of compromised EC2 instances. Slack webhooks for real-time alerts.</p>
+                        <h3 class="project-card__title">MCP Security Incident Response System</h3>
+                        <p class="project-card__description">AI-powered security ops with automated containment. GuardDuty triggers EventBridge → Lambda isolates EC2 via security group swap. MCP server exposes five investigation tools to Claude Desktop. Slack webhooks for alerts.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">MCP</span>
                             <span class="tech-tag">GuardDuty</span>
                             <span class="tech-tag">Lambda</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-10-MCP-Security-Ops" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/MCP-Security-Incident-Response-System" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 9 -->
+                    <!-- Project 4: GitOps Pipeline with ArgoCD -->
                     <article class="project-card fade-in stagger-4" data-categories="kubernetes cicd observability">
                         <div class="project-card__header">
-                            <span class="project-card__number">#09</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">GitOps Monitoring</h3>
-                        <p class="project-card__description">GitOps workflow with ArgoCD on EKS. Prometheus and Grafana deployed via Helm. Git commits trigger automatic cluster sync — infrastructure changes tracked like code.</p>
+                        <h3 class="project-card__title">GitOps Pipeline with ArgoCD and Full-Stack Observability</h3>
+                        <p class="project-card__description">Production-style Kubernetes deployment where Git commits flow to running workloads automatically. ArgoCD with automated sync and self-healing. kube-prometheus-stack via Helm for metrics and dashboards.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">ArgoCD</span>
                             <span class="tech-tag">Prometheus</span>
                             <span class="tech-tag">Helm</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-9-GitOps-ArgoCD-Monitoring" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/GitOps-Pipeline-with-ArgoCD-and-Full-Stack-Observability" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 8 -->
+                    <!-- Project 3: Slack MCP Assistant -->
                     <article class="project-card fade-in stagger-5" data-categories="ai">
                         <div class="project-card__header">
-                            <span class="project-card__number">#08</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                             </svg>
                         </div>
                         <h3 class="project-card__title">Slack MCP Assistant</h3>
-                        <p class="project-card__description">MCP server connecting Claude Desktop to Slack workspaces. Retrieves and summarises messages using Slack Web API. Natural language interface to team communications.</p>
+                        <p class="project-card__description">MCP server connecting Claude Desktop to Slack for natural language workspace queries. Stdio transport keeps tokens local. User ID enrichment resolves names for readable summaries. Time-based filtering for focused context.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">MCP</span>
                             <span class="tech-tag">Slack API</span>
                             <span class="tech-tag">Node.js</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-8-Slack-MCP-Assistant" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/Slack-MCP-Assistant" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 7 -->
-                    <article class="project-card fade-in stagger-6" data-categories="security">
+                    <!-- Project 2: End-to-End DevSecOps Pipeline -->
+                    <article class="project-card fade-in stagger-6" data-categories="security kubernetes cicd">
                         <div class="project-card__header">
-                            <span class="project-card__number">#07</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">Live Threat Modeling</h3>
-                        <p class="project-card__description">Real-world OSINT exercise. Analysed a gaming platform's winner disclosure practices, demonstrated social engineering vectors, proposed privacy controls. STRIDE methodology on a live target.</p>
-                        <div class="project-card__tech">
-                            <span class="tech-tag">STRIDE</span>
-                            <span class="tech-tag">OSINT</span>
-                            <span class="tech-tag">Threat Modeling</span>
-                        </div>
-                        <a href="https://github.com/nfroze/Project-7-Live-Threat-Modeling" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                            View Code →
-                        </a>
-                    </article>
-
-                    <!-- Project 6 -->
-                    <article class="project-card fade-in stagger-7" data-categories="ai">
-                        <div class="project-card__header">
-                            <span class="project-card__number">#06</span>
-                            <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <circle cx="12" cy="12" r="10"/>
-                                <circle cx="12" cy="12" r="4"/>
-                                <line x1="21.17" y1="8" x2="12" y2="8"/>
-                                <line x1="3.95" y1="6.06" x2="8.54" y2="14"/>
-                                <line x1="10.88" y1="21.94" x2="15.46" y2="14"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-card__title">AI Chrome Extension</h3>
-                        <p class="project-card__description">Chrome extension for LinkedIn post analysis using Claude API. Generates TLDR summaries and satirical commentary with spam scoring. Browser-based AI integration.</p>
-                        <div class="project-card__tech">
-                            <span class="tech-tag">Chrome Extension</span>
-                            <span class="tech-tag">Claude API</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <a href="https://github.com/nfroze/Project-6-AI-Chrome-Extension" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                            View Code →
-                        </a>
-                    </article>
-
-                    <!-- Project 5 -->
-                    <article class="project-card fade-in stagger-8" data-categories="security kubernetes cicd">
-                        <div class="project-card__header">
-                            <span class="project-card__number">#05</span>
-                            <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-card__title">DevSecOps Pipeline</h3>
-                        <p class="project-card__description">End-to-end security pipeline. Node.js app deployed to EKS with automated scanning at every stage — SAST, secrets, containers, IaC. GuardDuty runtime protection, Splunk SIEM integration.</p>
+                        <h3 class="project-card__title">End-to-End DevSecOps Pipeline with SIEM Integration</h3>
+                        <p class="project-card__description">Four-stage security pipeline with Semgrep, Trivy, Gitleaks, Checkov gates. EKS deployment with hardened manifests. GuardDuty and CloudWatch stream via Lambda to Splunk Cloud. Documented security exceptions.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">EKS</span>
                             <span class="tech-tag">GuardDuty</span>
                             <span class="tech-tag">Splunk</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-5-DevSecOps-Pipeline" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/End-to-End-DevSecOps-Pipeline-with-SIEM-Integration" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
 
-                    <!-- Project 4 -->
-                    <article class="project-card fade-in stagger-1" data-categories="security">
+                    <!-- Project 1: Healthcare Threat Model -->
+                    <article class="project-card fade-in stagger-7" data-categories="security">
                         <div class="project-card__header">
-                            <span class="project-card__number">#04</span>
+                            
                             <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
-                        <h3 class="project-card__title">Threat Modeling</h3>
-                        <p class="project-card__description">Healthcare platform security assessment. STRIDE threat modeling with MITRE ATT&CK mapping. Three attack scenarios analysed with risk scores and incident response playbooks.</p>
+                        <h3 class="project-card__title">Healthcare Threat Model: STRIDE Analysis</h3>
+                        <p class="project-card__description">Comprehensive threat model for HIPAA-compliant platform. 15 prioritised threats across five trust boundaries. STRIDE methodology mapped to MITRE ATT&CK and HIPAA Security Rule. Remediation with working code examples.</p>
                         <div class="project-card__tech">
                             <span class="tech-tag">STRIDE</span>
                             <span class="tech-tag">MITRE ATT&CK</span>
-                            <span class="tech-tag">Risk Assessment</span>
+                            <span class="tech-tag">HIPAA</span>
                         </div>
-                        <a href="https://github.com/nfroze/Project-4-Threat-Modeling" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                            View Code →
-                        </a>
-                    </article>
-
-                    <!-- Project 3 -->
-                    <article class="project-card fade-in stagger-2" data-categories="security cicd">
-                        <div class="project-card__header">
-                            <span class="project-card__number">#03</span>
-                            <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-card__title">IaC Security</h3>
-                        <p class="project-card__description">Terraform AWS infrastructure with Checkov scanning baked into CI. IAM groups with least privilege by default. Non-compliant infrastructure blocked before it exists.</p>
-                        <div class="project-card__tech">
-                            <span class="tech-tag">Terraform</span>
-                            <span class="tech-tag">Checkov</span>
-                            <span class="tech-tag">IAM</span>
-                        </div>
-                        <a href="https://github.com/nfroze/Project-3-IaC-Security" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                            View Code →
-                        </a>
-                    </article>
-
-                    <!-- Project 2 -->
-                    <article class="project-card fade-in stagger-3" data-categories="security">
-                        <div class="project-card__header">
-                            <span class="project-card__number">#02</span>
-                            <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-card__title">Container Security</h3>
-                        <p class="project-card__description">Docker image scanning with Trivy, deployment to ECS, OWASP ZAP dynamic testing against the running application via ALB. Security testing at build and runtime.</p>
-                        <div class="project-card__tech">
-                            <span class="tech-tag">Trivy</span>
-                            <span class="tech-tag">ECS</span>
-                            <span class="tech-tag">OWASP ZAP</span>
-                        </div>
-                        <a href="https://github.com/nfroze/Project-2-Container-Security" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                            View Code →
-                        </a>
-                    </article>
-
-                    <!-- Project 1 -->
-                    <article class="project-card fade-in stagger-4" data-categories="security cicd">
-                        <div class="project-card__header">
-                            <span class="project-card__number">#01</span>
-                            <svg class="project-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
-                        <h3 class="project-card__title">Secure CI/CD</h3>
-                        <p class="project-card__description">Foundation pipeline with security scanning for Node.js. GitHub Actions running Semgrep SAST, npm audit for dependencies, Gitleaks for secrets. Security gates on every push.</p>
-                        <div class="project-card__tech">
-                            <span class="tech-tag">GitHub Actions</span>
-                            <span class="tech-tag">Semgrep</span>
-                            <span class="tech-tag">Gitleaks</span>
-                        </div>
-                        <a href="https://github.com/nfroze/Project-1-Secure-CI-CD" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                        <a href="https://github.com/nfroze/Healthcare-Threat-Model-STRIDE-Analysis" target="_blank" rel="noopener noreferrer" class="project-card__link">
                             View Code →
                         </a>
                     </article>
@@ -1989,7 +1884,7 @@
         <div class="container">
             <p class="footer__text">
                 Built with GitHub Actions, S3, CloudFront, and Terraform.
-                <a href="https://github.com/nfroze/Project-16-Portfolio-Pipeline" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">View pipeline →</a>
+                <a href="https://github.com/nfroze/Portfolio-CI-CD-Pipeline" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">View pipeline →</a>
             </p>
         </div>
     </footer>
