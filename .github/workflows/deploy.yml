@@ -11,6 +11,8 @@ on:
       - '*.jpg'
       - '*.jpeg'
       - '*.webp'
+      - 'images/**'
+      - 'videos/**'
   workflow_dispatch:
 
 jobs:
@@ -30,7 +32,7 @@ jobs:
 
       - name: Upload files to S3
         run: |
-          # Sync site files only
+          # Sync site files (excluding dev/build files)
           aws s3 sync . s3://noahfrost-devsecops/ \
             --exclude ".git/*" \
             --exclude ".github/*" \
@@ -39,6 +41,13 @@ jobs:
             --exclude ".gitignore" \
             --exclude "README.md" \
             --delete
+
+          # Ensure mp4 files have correct Content-Type for browser playback
+          aws s3 cp s3://noahfrost-devsecops/videos/ s3://noahfrost-devsecops/videos/ \
+            --recursive \
+            --content-type "video/mp4" \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=31536000, immutable"
 
       - name: Invalidate CloudFront cache
         run: |
