@@ -38,7 +38,9 @@ The deployment flow runs separately: GitHub Actions checks out the repository, a
 
 ## Screenshots
 
-![](screenshots/website.png)
+**Portfolio Homepage** — The live deployed website showcasing Noah Frost's professional profile, including a featured headshot, navigation menu, professional summary, and prominent call-to-action buttons. This is the static site served globally via CloudFront and S3, demonstrating the successful delivery of the CI/CD pipeline.
+
+![](screenshots/portfolio-homepage.png)
 
 ## Author
 
