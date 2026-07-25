@@ -12,8 +12,6 @@ This is a deliberately simple project, but it reflects how production static sit
 
 ## Architecture
 
-![](screenshots/cloud-architecture.png)
-
 The request flow runs left to right: DNS resolution through Route53 directs traffic to a CloudFront distribution, which serves cached content from an S3 origin bucket. CloudFront handles TLS termination using an ACM certificate and enforces HTTPS by redirecting all HTTP requests.
 
 The deployment flow runs separately: GitHub Actions checks out the repository, authenticates to AWS, syncs files to S3 (excluding infrastructure and CI/CD config), then invalidates the CloudFront cache so changes propagate globally.
@@ -41,6 +39,26 @@ The deployment flow runs separately: GitHub Actions checks out the repository, a
 **Portfolio Homepage** — The live deployed website showcasing Noah Frost's professional profile, including a featured headshot, navigation menu, professional summary, and prominent call-to-action buttons. This is the static site served globally via CloudFront and S3, demonstrating the successful delivery of the CI/CD pipeline.
 
 ![](screenshots/portfolio-homepage.png)
+
+**GitHub Actions Deployment Run** — A successful run of the Deploy Portfolio to AWS workflow, showing every step of the deploy job completing in ten seconds: checkout, AWS credential configuration, the S3 sync, and the CloudFront cache invalidation. This is the pipeline that turns a push to `main` into a live site.
+
+![](screenshots/github-actions-deploy-run.png)
+
+**S3 Origin Bucket** — The noahfrost-devsecops bucket holding the deployed site: `index.html`, the resume PDF, and the images and videos directories. The workflow syncs these objects with `--delete`, so the bucket always mirrors the repository rather than accumulating stale files.
+
+![](screenshots/s3-bucket-objects.png)
+
+**CloudFront Distribution** — The distribution serving the site, with noahfrost.co.uk configured as an alternate domain name and a custom ACM certificate attached for TLS. Traffic is compressed, cached at edge locations, and HTTP requests are redirected to HTTPS.
+
+![](screenshots/cloudfront-distribution.png)
+
+**CloudFront Invalidations** — Completed invalidation records created by the deploy workflow. Because CloudFront caches aggressively at the edge, a deployment that only syncs S3 would serve stale content until the TTL expired; invalidating `/*` forces the CDN to re-fetch from the origin so changes appear immediately.
+
+![](screenshots/cloudfront-invalidations.png)
+
+**Route 53 Hosted Zone** — DNS records for noahfrost.co.uk, with A and AAAA alias records pointing at the CloudFront distribution so the domain resolves over both IPv4 and IPv6. The CNAME record is the ACM validation record proving domain ownership for the TLS certificate.
+
+![](screenshots/route53-records.png)
 
 ## Author
 
